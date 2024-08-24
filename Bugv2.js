@@ -965,14 +965,14 @@ if (XeonTheCreator) return replygcxeon(bvl)
         
 //total features
 const xeonfeature = () =>{
-            var mytext = fs.readFileSync("./TOGE-MD.js").toString()
+            var mytext = fs.readFileSync("./Bugv2.js").toString()
             var numUpper = (mytext.match(/case '/g) || []).length
             return numUpper
         }
         //autoreply
 for (let BhosdikaXeon of VoiceNoteXeon) {
 if (budy === BhosdikaXeon) {
-let audiobuffy = fs.readFileSync(`./TogeMedia/audio/${BhosdikaXeon}.mp3`)
+let audiobuffy = fs.readFileSync(`./lib/Media/audio/${BhosdikaXeon}.mp3`)
 XeonBotInc.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 }
 }
@@ -1326,7 +1326,7 @@ fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduse
             case 'sim': {
                 if (!XeonTheCreator) return XeonStickOwner()
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-                await fsx.copy(delb, './lib/Media/theme/thumb.jpg')
+                await fsx.copy(delb, './lib/theme/thumb.jpg')
                 fs.unlinkSync(delb)
                 replygcxeon(mess.done)
             }
@@ -1337,7 +1337,7 @@ fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduse
             case 'sgm': {
                 if (!XeonTheCreator) return XeonStickOwner()
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-                await fsx.copy(delb, './lib/Media/theme/bug.mp4')
+                await fsx.copy(delb, './lib/theme/bug.mp4')
                 fs.unlinkSync(delb)
                 replygcxeon(mess.done)
             }
@@ -1398,7 +1398,7 @@ fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduse
             break
             case 'delprem':
                 if (!XeonTheCreator) return XeonStickOwner()
-                if (args.length < 1) return replygcxeon(`Usage ${prefix + command} @tag\n${prefix + command} number\n\nExample : ${prefix + command} 13038480418`)
+                if (args.length < 1) return replygcxeon(`Usage ${prefix + command} @tag\n${prefix + command} number\n\nExample : ${prefix + command} 6283833304947`)
                 if (m.mentionedJid.length !== 0) {
                     for (let i = 0; i < m.mentionedJid.length; i++) {
                         premium.splice(getPremiumPosition(m.mentionedJid[i], premium), 1)
@@ -1413,7 +1413,7 @@ fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduse
             break
             case 'listprem': {
                 if (!XeonTheCreator) return XeonStickOwner()
-                let data = require('./src/data/role/premium.json')
+                let data = require('./lib/src/data/role/premium.json')
                 let txt = `*------「 LIST PREMIUM 」------*\n\n`
                 for (let x of data) {
                     txt += `Number : ${x.id}\n`
