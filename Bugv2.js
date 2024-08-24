@@ -1,4 +1,4 @@
-require('./lib/listmenu')
+require('./lib/list/listmenu')
 const {
     BufferJSON,
     WA_DEFAULT_EPHEMERAL,
