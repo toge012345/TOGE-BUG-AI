@@ -1,13 +1,13 @@
 {
-    "name": "TOGE-MD",
-    "version": "11.0.0",
+    "name": "TOGE-BUG-V2",
+    "version": "2.0.0",
     "description": "Whatsapp Bot By toge012345",
     "main": "index.js",
     "type": "commonjs",
     "directories": {
         "lib": "lib",
         "src": "src",
-        "media": "TogeMedia"
+        "media": "Media"
     },
     "scripts": {
         "code": "node main.js",
