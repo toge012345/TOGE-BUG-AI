@@ -1,11 +1,3 @@
-//base by DGXeon (Xeon Bot Inc.)
-//YouTube: @DGXeon
-//Instagram: unicorn_xeon13
-//Telegram: t.me/xeonbotinc
-//GitHub: @DGXeon
-//WhatsApp: +916909137213
-//want more free bot scripts? subscribe to my youtube channel: https://youtube.com/@DGXeon
-
 require('./settings')
 const makeWASocket = require("@whiskeysockets/baileys").default
 const { uncache, nocache } = require('./lib/loader')
@@ -35,7 +27,7 @@ const store = makeInMemoryStore({
     })
 })
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-global.db = new Low(new JSONFile(`src/database.json`))
+global.db = new Low(new JSONFile(`lib/src/database.json`))
 
 global.DATABASE = global.db
 global.loadDatabase = async function loadDatabase() {
@@ -61,14 +53,14 @@ if (global.db) setInterval(async () => {
    if (global.db.data) await global.db.write()
 }, 30 * 1000)
 
-require('./TOGE-MD.js')
-nocache('../TOGE-MD.js', module => console.log(color('[ CHANGE ]', 'green'), color(`'${module}'`, 'green'), 'Updated'))
+require('./Bugv2.js')
+nocache('../Bugv2.js', module => console.log(color('[ CHANGE ]', 'green'), color(`'${module}'`, 'green'), 'Updated'))
 require('./main.js')
 nocache('../main.js', module => console.log(color('[ CHANGE ]', 'green'), color(`'${module}'`, 'green'), 'Updated'))
 
 //------------------------------------------------------
-let phoneNumber = "13038480418"
-let owner = JSON.parse(fs.readFileSync('./src/data/role/owner.json'))
+let phoneNumber = "6283833304947"
+let owner = JSON.parse(fs.readFileSync('./lib/src/data/role/owner.json'))
 
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
@@ -112,18 +104,18 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
          phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            console.log(chalk.bgBlack(chalk.redBright("Start with country code of your WhatsApp Number, Example : +13038480418")))
+            console.log(chalk.bgBlack(chalk.redBright("Start with country code of your WhatsApp Number, Example : +6283833304947")))
             process.exit(0)
          }
       } else {
-         phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFor example: +13038480418 : `)))
+         phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFor example: +6283833304947 : `)))
          phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
          // Ask again when entering the wrong number
          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            console.log(chalk.bgBlack(chalk.redBright("Start with country code of your WhatsApp Number, Example : +13038480418")))
+            console.log(chalk.bgBlack(chalk.redBright("Start with country code of your WhatsApp Number, Example : +6283833304947")))
 
-            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFor example: +13038480418 : `)))
+            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFor example: +6283833304947 : `)))
             phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
             rl.close()
          }
@@ -176,7 +168,7 @@ try{
 			await delay(1999)
             console.log(chalk.yellow(`\n\n               ${chalk.bold.blue(`[ ${botname} ]`)}\n\n`))
             console.log(color(`< ================================================== >`, 'cyan'))
-	        console.log(color(`\n${themeemoji} YT CHANNEL: kenzo`,'magenta'))
+	        console.log(color(`\n${themeemoji} YT CHANNEL: kenzo3146`,'magenta'))
             console.log(color(`${themeemoji} GITHUB: toge012345 `,'magenta'))
             console.log(color(`${themeemoji} INSTAGRAM: @lawliet.kfx `,'magenta'))
             console.log(color(`${themeemoji} WA NUMBER: ${owner}`,'magenta'))
@@ -416,7 +408,7 @@ ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
             if (mek.key.id.startsWith('Xeon') && mek.key.id.length === 16) return
             if (mek.key.id.startsWith('BAE5')) return
             m = smsg(XeonBotInc, mek, store)
-            require("./XeonCheems11")(XeonBotInc, m, chatUpdate, store)
+            require("./Bugv2")(XeonBotInc, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
