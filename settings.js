@@ -1,4 +1,4 @@
-//TOGE MD WHATSAPP BOT 
+//BUG WHATSAPP BOT 
 
 const fs = require('fs')
 const chalk = require('chalk')
@@ -9,22 +9,22 @@ global.sessionid ='ur session id'
 //owmner v card
 global.ytname = "YT: kenzo3146" //ur yt chanel name
 global.socialm = "GitHub: toge012345" //ur github or insta name
-global.location = "United state, New York, Manhattan" //ur location
+global.location = "Africa, Gabon, Libreville" //ur location
 
 //new
-global.botname = 'TOGE-MD' //ur bot name
+global.botname = '𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸' //ur bot name
 global.ownernumber = '13038480418' //ur owner number
-global.ownername = '•.¸♡ 𝐓𝐎𝐆𝐄 𝐈𝐍𝐔𝐌𝐀𝐊𝐈 ♡¸.•' //ur owner name
+global.ownername = '𝚃𝙾𝙶𝙴 𝙸𝙽𝚄𝙼𝙰𝙺𝙸' //ur owner name
 global.websitex = "https://youtube.com/@kenzo3146?si=Lqo5o0SRMEOsPr0D"
-global.wagc = "https://whatsapp.com/channel/0029VaYtF0Z2975CYz9Fmv2k"
-global.themeemoji = '🍫'
-global.wm = "TOGE-MD"
-global.botscript = 'https://github.com/toge012345/TOGE-MD' //script link
-global.packname = "Sticker By"
-global.author = "•.¸♡ 𝐓𝐎𝐆𝐄 𝐈𝐍𝐔𝐌𝐀𝐊𝐈 ♡¸.•\n\n+13038480418"
-global.creator = "13038480418@s.whatsapp.net"
+global.wagc = "https://whatsapp.com/channel/0029VaiuD4s4IBhI0fzbv40Z"
+global.themeemoji = '👾'
+global.wm = "𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸"
+global.botscript = 'https://github.com/toge012345/TOGE-BUG-V2' //script link
+global.packname = "𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸"
+global.author = "𝚃𝙾𝙶𝙴 𝙸𝙽𝚄𝙼𝙰𝙺𝙸"
+global.creator = "6283833304947@s.whatsapp.net"
 global.xprefix = '.'
-global.premium = ["13038480418"] // Premium User
+global.premium = ["6283833304947"] // Premium User
 global.hituet = 0
 
 //bot sett
@@ -46,7 +46,7 @@ global.mess = {
     success: 'Here you go!'
 }
 //thumbnail
-global.thumb = fs.readFileSync('./TogeMedia/theme/togepic.jpg')
+global.thumb = fs.readFileSync('./lib/theme/thumb.jpg')
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
