@@ -97,18 +97,18 @@ const {
     getAllPremiumUser,
 } = require('./lib/premiun')
 //data
-let ntnsfw = JSON.parse(fs.readFileSync('./lib/src/data/function/nsfw.json'))
-let bad = JSON.parse(fs.readFileSync('./lib/src/data/function/badword.json'))
-let premium = JSON.parse(fs.readFileSync('./lib/src/data/role/premium.json'))
-const owner = JSON.parse(fs.readFileSync('./lib/src/data/role/owner.json'))
+let ntnsfw = JSON.parse(fs.readFileSync('./lib/database/nsfw.json'))
+let bad = JSON.parse(fs.readFileSync('./lib/database/badword.json'))
+let premium = JSON.parse(fs.readFileSync('./lib/database/premium.json'))
+const owner = JSON.parse(fs.readFileSync('./lib/database/owner.json'))
 //media
-const VoiceNoteXeon = JSON.parse(fs.readFileSync('./lib/database/vn.json'))
-const StickerXeon = JSON.parse(fs.readFileSync('./lib/database/sticker.json'))
-const ImageXeon = JSON.parse(fs.readFileSync('./lib/database/image.json'))
-const VideoXeon = JSON.parse(fs.readFileSync('./lib/database/video.json'))
-const DocXeon = JSON.parse(fs.readFileSync('./lib/database/doc.json'))
-const ZipXeon = JSON.parse(fs.readFileSync('./lib/database/zip.json'))
-const ApkXeon = JSON.parse(fs.readFileSync('./lib/database/apk.json'))
+const VoiceNoteXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/vn.json'))
+const StickerXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/sticker.json'))
+const ImageXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/image.json'))
+const VideoXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/video.json'))
+const DocXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/doc.json'))
+const ZipXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/zip.json'))
+const ApkXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/apk.json'))
 
 //bug database
 const { bugtext1 } = require('./lib/src/data/function/bugv2/bugtext1')
@@ -125,7 +125,7 @@ const wkwk = fs.readFileSync(`./lib/src/data/function/bugv2/x.mp3`)
 const xsteek = fs.readFileSync(`./lib/src/data/function/bugv2/x.webp`)
 const o = fs.readFileSync(`./lib/src/data/function/bugv2/o.jpg`)
 
-const xeonverifieduser = JSON.parse(fs.readFileSync('./lib/src/data/role/user.json'))
+const xeonverifieduser = JSON.parse(fs.readFileSync('./lib/database/user.json'))
 
 global.db.data = JSON.parse(fs.readFileSync('./lib/src/database.json'))
 if (global.db.data) global.db.data = {
