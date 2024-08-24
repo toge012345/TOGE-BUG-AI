@@ -295,7 +295,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
                             title: botname,
                             body: ownername,
                             previewType: "PHOTO",
-                            thumbnail: fs.readFileSync('./lib/theme/pic.jpg'),
+                            thumbnail: fs.readFileSync('./lib/theme/thumb.jpg'),
                             sourceUrl: wagc
                         }
                     },
@@ -311,7 +311,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
                         showAdAttribution: true,
                         title: botname,
                         body: ownername,
-                        thumbnail: fs.readFileSync('./lib/theme/pic.jpg'),
+                        thumbnail: fs.readFileSync('./lib/theme/thumb.jpg'),
                         sourceUrl: websitex,
                         mediaType: 1,
                         renderLargerThumbnail: true
@@ -978,19 +978,19 @@ XeonBotInc.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: 
 }
 for (let BhosdikaXeon of StickerXeon){
 if (budy === BhosdikaXeon){
-let stickerbuffy = fs.readFileSync(`./TogeMedia/sticker/${BhosdikaXeon}.webp`)
+let stickerbuffy = fs.readFileSync(`./lib/Media/sticker/${BhosdikaXeon}.webp`)
 XeonBotInc.sendMessage(m.chat, { sticker: stickerbuffy }, { quoted: m })
 }
 }
 for (let BhosdikaXeon of ImageXeon){
 if (budy === BhosdikaXeon){
-let imagebuffy = fs.readFileSync(`./TogeMedia/image/${BhosdikaXeon}.jpg`)
+let imagebuffy = fs.readFileSync(`./lib/Media/image/${BhosdikaXeon}.jpg`)
 XeonBotInc.sendMessage(m.chat, { image: imagebuffy }, { quoted: m })
 }
 }
 for (let BhosdikaXeon of VideoXeon){
 if (budy === BhosdikaXeon){
-let videobuffy = fs.readFileSync(`./TogeMedia/video/${BhosdikaXeon}.mp4`)
+let videobuffy = fs.readFileSync(`./lib/Media/video/${BhosdikaXeon}.mp4`)
 XeonBotInc.sendMessage(m.chat, { video: videobuffy }, { quoted: m })
 }
 }
@@ -1000,7 +1000,7 @@ XeonBotInc.sendMessage(from, { document: teks, mimetype: 'application/vnd.androi
 }
 for (let BhosdikaXeon of ApkXeon) {
 if (budy === BhosdikaXeon) {
-let buffer = fs.readFileSync(`./TogeMedia/apk/${BhosdikaXeon}.apk`)
+let buffer = fs.readFileSync(`./lib/Media/apk/${BhosdikaXeon}.apk`)
 sendapk(buffer)
 }
 }
@@ -1010,7 +1010,7 @@ XeonBotInc.sendMessage(from, { document: teks, mimetype: 'application/zip'}, {qu
 }
 for (let BhosdikaXeon of ZipXeon) {
 if (budy === BhosdikaXeon) {
-let buffer = fs.readFileSync(`./TogeMedia/zip/${BhosdikaXeon}.zip`)
+let buffer = fs.readFileSync(`./lib/Media/zip/${BhosdikaXeon}.zip`)
 sendzip(buffer)
 }
 }
@@ -1020,7 +1020,7 @@ XeonBotInc.sendMessage(from, { document: teks, mimetype: 'application/pdf'}, {qu
 }
 for (let BhosdikaXeon of DocXeon) {
 if (budy === BhosdikaXeon) {
-let buffer = fs.readFileSync(`./TogeMedia/doc/${BhosdikaXeon}.pdf`)
+let buffer = fs.readFileSync(`./lib/Media/doc/${BhosdikaXeon}.pdf`)
 senddocu(buffer)
 }
 }
@@ -1201,7 +1201,7 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
         //user db
         if (isCommand && !isUser) {
 xeonverifieduser.push(sender)
-fs.writeFileSync('./src/data/role/user.json', JSON.stringify(xeonverifieduser, null, 2))
+fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduser, null, 2))
 }
         
         switch (isCommand) {
@@ -1210,7 +1210,7 @@ fs.writeFileSync('./src/data/role/user.json', JSON.stringify(xeonverifieduser, n
                if (!groupAdmins) return replygcxeon(mess.admin)
                if (args.length < 1) return replygcxeon( `Send command ${prefix}addbadword [harsh word]. Example ${prefix}addbadword asshole`)
                bad.push(q)
-               fs.writeFileSync('./src/data/function/badword.json', JSON.stringify(bad))
+               fs.writeFileSync('./lib/src/data/function/badword.json', JSON.stringify(bad))
                replygcxeon('Successfully Added Bad Word!')
             break
             case 'delbadword': case 'deldb':
@@ -1218,7 +1218,7 @@ fs.writeFileSync('./src/data/role/user.json', JSON.stringify(xeonverifieduser, n
                if (!groupAdmins) return replygcxeon(mess.admin)
                if (args.length < 1) return replygcxeon( `Send commands ${prefix}addbadword [bad word]. Example ${prefix}addbadword asshole`)                 
                bad.splice(q)
-               fs.writeFileSync('./src/data/function/badword.json', JSON.stringify(bad))
+               fs.writeFileSync('./lib/src/data/function/badword.json', JSON.stringify(bad))
                replygcxeon('Successfully Deleted Bad Word!')
             break 
             case 'resetuser':
@@ -1326,7 +1326,7 @@ fs.writeFileSync('./src/data/role/user.json', JSON.stringify(xeonverifieduser, n
             case 'sim': {
                 if (!XeonTheCreator) return XeonStickOwner()
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-                await fsx.copy(delb, './TogeMedia/theme/togepic.jpg')
+                await fsx.copy(delb, './lib/Media/theme/thumb.jpg')
                 fs.unlinkSync(delb)
                 replygcxeon(mess.done)
             }
@@ -1337,7 +1337,7 @@ fs.writeFileSync('./src/data/role/user.json', JSON.stringify(xeonverifieduser, n
             case 'sgm': {
                 if (!XeonTheCreator) return XeonStickOwner()
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-                await fsx.copy(delb, './TogeMedia/theme/togevid.mp4')
+                await fsx.copy(delb, './lib/Media/theme/bug.mp4')
                 fs.unlinkSync(delb)
                 replygcxeon(mess.done)
             }
@@ -1402,12 +1402,12 @@ fs.writeFileSync('./src/data/role/user.json', JSON.stringify(xeonverifieduser, n
                 if (m.mentionedJid.length !== 0) {
                     for (let i = 0; i < m.mentionedJid.length; i++) {
                         premium.splice(getPremiumPosition(m.mentionedJid[i], premium), 1)
-                        fs.writeFileSync("./src/data/role/premium.json", JSON.stringify(premium))
+                        fs.writeFileSync("./lib/src/data/role/premium.json", JSON.stringify(premium))
                     }
                     replygcxeon("Delete Success")
                 } else {
                     premium.splice(getPremiumPosition(args[0] + "@s.whatsapp.net", premium), 1)
-                    fs.writeFileSync("./src/data/role/premium.json", JSON.stringify(premium))
+                    fs.writeFileSync("./lib/src/data/role/premium.json", JSON.stringify(premium))
                     replygcxeon("Delete Success")
                 }
             break
@@ -1434,7 +1434,7 @@ bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
 let ceknye = await XeonBotInc.onWhatsApp(bnnd)
 if (ceknye.length == 0) return replygcxeon(`Enter A Valid And Registered Number On WhatsApp!!!`)
 owner.push(bnnd)
-fs.writeFileSync('./src/data/role/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./lib/src/data/role/owner.json', JSON.stringify(owner))
 replygcxeon(`Number ${bnnd} Has Become An Owner!!!`)
 break
 case 'delowner':
@@ -1443,7 +1443,7 @@ if (!args[0]) return replygcxeon(`Use ${prefix+command} nomor\nExample ${prefix+
 ya = q.split("|")[0].replace(/[^0-9]/g, '')
 unp = owner.indexOf(ya)
 owner.splice(unp, 1)
-fs.writeFileSync('./src/data/role/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./lib/src/data/role/owner.json', JSON.stringify(owner))
 replygcxeon(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
 break
 case 'listowner': {
