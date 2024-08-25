@@ -60,7 +60,7 @@ nocache('../main.js', module => console.log(color('[ CHANGE ]', 'green'), color(
 
 //------------------------------------------------------
 let phoneNumber = "6283833304947"
-let owner = JSON.parse(fs.readFileSync('./lib/src/data/role/owner.json'))
+let owner = JSON.parse(fs.readFileSync('./lib/database/owner.json'))
 
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
