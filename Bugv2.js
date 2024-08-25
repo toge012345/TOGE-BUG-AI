@@ -97,8 +97,8 @@ const {
     getAllPremiumUser,
 } = require('./lib/premiun')
 //data
-let ntnsfw = JSON.parse(fs.readFileSync('./lib/database/nsfw.json'))
-let bad = JSON.parse(fs.readFileSync('./lib/database/badword.json'))
+let ntnsfw = JSON.parse(fs.readFileSync('./lib/src/data/function/nsfw.json'))
+let bad = JSON.parse(fs.readFileSync('../lib/src/data/function/badword.json'))
 let premium = JSON.parse(fs.readFileSync('./lib/database/premium.json'))
 const owner = JSON.parse(fs.readFileSync('./lib/database/owner.json'))
 //media
@@ -2853,12 +2853,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
     if (response.status === 200) {
       const repoData = response.data
       const formattedInfo = `
-${themeemoji} Repository Name: ${repoData.name}
-${themeemoji} Description: ${repoData.description}
-${themeemoji} Owner: ${repoData.owner.login}
-${themeemoji} Stars: ${repoData.stargazers_count}
-${themeemoji} Forks: ${repoData.forks_count}
-${themeemoji} URL: ${repoData.html_url}
+ ❏ 𝗢𝘄𝗻𝗲𝗿: ${repoData.owner.login}
+
+ ❏ 𝗦𝘁𝗮𝗿𝘀: ${repoData.stargazers_count}
+
+ ❏ 𝗙𝗼𝗿𝗸𝘀: ${repoData.forks_count}
+
+ ❏ 𝗨𝗿𝗹: ${repoData.html_url}
+
+ *❝ Dont forget to give a Star ⭐ to the repo.*
      
  `.trim()
       await XeonBotInc.relayMessage(m.chat,  {
@@ -2979,7 +2982,7 @@ break
                 break
 case 'sc': case 'script': case 'donate': case 'donate': case 'cekupdate': case 'updatebot': case 'cekbot': case 'sourcecode': {
 let me = m.sender
-let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nHi @${me.split('@')[0]}`
+let teks = `「  ${global.botname} 𝗦𝗰𝗿𝗶𝗽𝘁 」*\n\n𝗦𝘂𝗽𝗽𝗼𝗿𝘁: ${global.websitex}\n𝗚𝗶𝘁𝗵𝘂𝗯: ${global.botscript}\n\n𝚝𝚑𝚊𝚗𝚔𝚜 𝚞𝚜𝚒𝚗𝚐 𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸.`
 sendXeonBotIncMessage(from, { 
 text: teks,
 mentions:[sender],
@@ -3109,7 +3112,7 @@ break
                 XeonBotInc.sendMessage(m.chat, {
                     document: audio,
                     mimetype: 'audio/mp3',
-                    fileName: `dgxeon.mp3`
+                    fileName: `toge.mp3`
                 }, {
                     quoted: m
                 })
