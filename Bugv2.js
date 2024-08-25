@@ -1201,7 +1201,7 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
         //user db
         if (isCommand && !isUser) {
 xeonverifieduser.push(sender)
-fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduser, null, 2))
+fs.writeFileSync('./lib/database/user.json', JSON.stringify(xeonverifieduser, null, 2))
 }
         
         switch (isCommand) {
@@ -1402,18 +1402,18 @@ fs.writeFileSync('./lib/src/data/role/user.json', JSON.stringify(xeonverifieduse
                 if (m.mentionedJid.length !== 0) {
                     for (let i = 0; i < m.mentionedJid.length; i++) {
                         premium.splice(getPremiumPosition(m.mentionedJid[i], premium), 1)
-                        fs.writeFileSync("./lib/src/data/role/premium.json", JSON.stringify(premium))
+                        fs.writeFileSync("./lib/database/premium.json", JSON.stringify(premium))
                     }
                     replygcxeon("Delete Success")
                 } else {
                     premium.splice(getPremiumPosition(args[0] + "@s.whatsapp.net", premium), 1)
-                    fs.writeFileSync("./lib/src/data/role/premium.json", JSON.stringify(premium))
+                    fs.writeFileSync("./lib/database/premium.json", JSON.stringify(premium))
                     replygcxeon("Delete Success")
                 }
             break
             case 'listprem': {
                 if (!XeonTheCreator) return XeonStickOwner()
-                let data = require('./lib/src/data/role/premium.json')
+                let data = require('./lib/database/premium.json')
                 let txt = `*------「 LIST PREMIUM 」------*\n\n`
                 for (let x of data) {
                     txt += `Number : ${x.id}\n`
@@ -1434,7 +1434,7 @@ bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
 let ceknye = await XeonBotInc.onWhatsApp(bnnd)
 if (ceknye.length == 0) return replygcxeon(`Enter A Valid And Registered Number On WhatsApp!!!`)
 owner.push(bnnd)
-fs.writeFileSync('./lib/src/data/role/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./lib/database/owner.json', JSON.stringify(owner))
 replygcxeon(`Number ${bnnd} Has Become An Owner!!!`)
 break
 case 'delowner':
@@ -1443,7 +1443,7 @@ if (!args[0]) return replygcxeon(`Use ${prefix+command} nomor\nExample ${prefix+
 ya = q.split("|")[0].replace(/[^0-9]/g, '')
 unp = owner.indexOf(ya)
 owner.splice(unp, 1)
-fs.writeFileSync('./lib/src/data/role/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./lib/database/owner.json', JSON.stringify(owner))
 replygcxeon(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
 break
 case 'listowner': {
