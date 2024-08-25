@@ -1439,7 +1439,7 @@ replygcxeon(`Number ${bnnd} Has Become An Owner!!!`)
 break
 case 'delowner':
 if (!XeonTheCreator) return XeonStickOwner()
-if (!args[0]) return replygcxeon(`Use ${prefix+command} nomor\nExample ${prefix+command} 13038480418`)
+if (!args[0]) return replygcxeon(`Use ${prefix+command} nomor\nExample ${prefix+command} 6283833304947`)
 ya = q.split("|")[0].replace(/[^0-9]/g, '')
 unp = owner.indexOf(ya)
 owner.splice(unp, 1)
@@ -1926,7 +1926,7 @@ if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
 if (AntiNsfw) return replygcxeon('Already activated')
 ntnsfw.push(from)
-fs.writeFileSync('./src/data/function/nsfw.json', JSON.stringify(ntnsfw))
+fs.writeFileSync('./lib/src/data/function/nsfw.json', JSON.stringify(ntnsfw))
 replygcxeon('Success in turning on nsfw in this group')
 var groupe = await XeonBotInc.groupMetadata(from)
 var members = groupe['participants']
@@ -1939,7 +1939,7 @@ XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\n
 if (!AntiNsfw) return replygcxeon('Already deactivated')
 let off = ntnsfw.indexOf(from)
 ntnsfw.splice(off, 1)
-fs.writeFileSync('./src/data/function/nsfw.json', JSON.stringify(ntnsfw))
+fs.writeFileSync('./lib/src/data/function/nsfw.json', JSON.stringify(ntnsfw))
 replygcxeon('Success in turning off nsfw in this group')
 } else {
   await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
@@ -2473,7 +2473,7 @@ XeonBotInc.sendMessage(m.chat, { text:teksop, mentions: await XeonBotInc.parseMe
 break
     case 'setbotbio':{
 if (!XeonTheCreator) return XeonStickOwner()
-if (!text) return replygcxeon(`Where is the text?\nExample: ${prefix + command} Cheems Bot`)
+if (!text) return replygcxeon(`Where is the text?\nExample: ${prefix + command} TOGE-BUG-MD`)
     await XeonBotInc.updateProfileStatus(text)
     replygcxeon(`Success in changing the bio of bot's number`)
     }
@@ -2799,9 +2799,9 @@ break
 
             contactMessage: {
 
-                displayName: 'TOGE-BUG-V2 📱',
+                displayName: 'TOGE-BUG-V2 👾',
 
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:TOGE-MD-V3 📱\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:owner number\nEND:VCARD`
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:TOGE-BUG-V2 👾\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:owner number\nEND:VCARD`
 
             }
 
@@ -3005,7 +3005,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./lib/theme/pic.jpg"),
+"thumbnail": fs.readFileSync("./lib/theme/thumb.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -3716,8 +3716,8 @@ if (args.length < 1) return replygcxeon('Whats the video name?')
 if (VideoXeon.includes(q)) return replygcxeon("The name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 VideoXeon.push(q)
-await fsx.copy(delb, `./TogeMedia/video/${q}.mp4`)
-fs.writeFileSync('./TogeMedia/database/togevideo.json', JSON.stringify(VideoXeon))
+await fsx.copy(delb, `./lib/Media/video/${q}.mp4`)
+fs.writeFileSync('./lib/database/auto_reply/video.json', JSON.stringify(VideoXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Success Adding Video\nCheck by typing ${prefix}listvideo`)
 }
@@ -3728,8 +3728,8 @@ if (args.length < 1) return replygcxeon('Enter the video name')
 if (!VideoXeon.includes(q)) return replygcxeon("The name does not exist in the database")
 let wanu = VideoXeon.indexOf(q)
 VideoXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/togevideo.json', JSON.stringify(VideoXeon))
-fs.unlinkSync(`./TogeMedia/video/${q}.mp4`)
+fs.writeFileSync('./lib/database/auto_reply/video.json', JSON.stringify(VideoXeon))
+fs.unlinkSync(`./lib/Media/video/${q}.mp4`)
 replygcxeon(`Success deleting video ${q}`)
 }
 break
@@ -3748,8 +3748,8 @@ if (args.length < 1) return replygcxeon('Whats the image name?')
 if (ImageXeon.includes(q)) return replygcxeon("The name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 ImageXeon.push(q)
-await fsx.copy(delb, `./TogeMedia/image/${q}.jpg`)
-fs.writeFileSync('./TogeMedia/database/togeimage.json', JSON.stringify(ImageXeon))
+await fsx.copy(delb, `./lib/Media/image/${q}.jpg`)
+fs.writeFileSync('./lib/database/auto_reply/image.json', JSON.stringify(ImageXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Success Adding Image\nCheck by typing ${prefix}listimage`)
 }
@@ -3760,8 +3760,8 @@ if (args.length < 1) return replygcxeon('Enter the image name')
 if (!ImageXeon.includes(q)) return replygcxeon("The name does not exist in the database")
 let wanu = ImageXeon.indexOf(q)
 ImageXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/togeimage.json', JSON.stringify(ImageXeon))
-fs.unlinkSync(`./TogeMedia/image/${q}.jpg`)
+fs.writeFileSync('./lib/lib/database/auto_reply/image.json', JSON.stringify(ImageXeon))
+fs.unlinkSync(`./lib/Media/image/${q}.jpg`)
 replygcxeon(`Success deleting image ${q}`)
 }
 break
@@ -3780,8 +3780,8 @@ if (args.length < 1) return replygcxeon('Whats the sticker name?')
 if (StickerXeon.includes(q)) return replygcxeon("The name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 StickerXeon.push(q)
-await fsx.copy(delb, `./TogeMedia/sticker/${q}.webp`)
-fs.writeFileSync('./TogeMedia/database/togesticker.json', JSON.stringify(StickerXeon))
+await fsx.copy(delb, `./lib/Media/sticker/${q}.webp`)
+fs.writeFileSync('./lib/database/auto_reply/sticker.json', JSON.stringify(StickerXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Success Adding Sticker\nCheck by typing ${prefix}liststicker`)
 }
@@ -3792,8 +3792,8 @@ if (args.length < 1) return replygcxeon('Enter the sticker name')
 if (!StickerXeon.includes(q)) return replygcxeon("The name does not exist in the database")
 let wanu = StickerXeon.indexOf(q)
 StickerXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/togesticker.json', JSON.stringify(StickerXeon))
-fs.unlinkSync(`./TogeMedia/sticker/${q}.webp`)
+fs.writeFileSync('./lib/database/auto_reply/sticker.json', JSON.stringify(StickerXeon))
+fs.unlinkSync(`./lib/Media/sticker/${q}.webp`)
 replygcxeon(`Success deleting sticker ${q}`)
 }
 break
@@ -3828,7 +3828,7 @@ View list of Messages With ${prefix}listmsg`)
             }
             break
             case 'listmsg': {
-                let msgs = JSON.parse(fs.readFileSync('./src/database.json'))
+                let msgs = JSON.parse(fs.readFileSync('./lib/src/database.json'))
 	        let seplit = Object.entries(global.db.data.database).map(([nama, isi]) => { return { nama, ...isi } })
 		let teks = ' DATABASE LIST \n\n'
 		for (let i of seplit) {
@@ -3851,8 +3851,8 @@ if (args.length < 1) return replygcxeon('Whats the audio name?')
 if (VoiceNoteXeon.includes(q)) return replygcxeon("The name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 VoiceNoteXeon.push(q)
-await fsx.copy(delb, `./TogeMedia/audio/${q}.mp3`)
-fs.writeFileSync('./TogeMedia/database/togevn.json', JSON.stringify(VoiceNoteXeon))
+await fsx.copy(delb, `./lib/Media/audio/${q}.mp3`)
+fs.writeFileSync('./lib/database/auto_reply/vn.json', JSON.stringify(VoiceNoteXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Success Adding Audio\nCheck by typing ${prefix}listvn`)
 }
@@ -3863,8 +3863,8 @@ if (args.length < 1) return replygcxeon('Enter the vn name')
 if (!VoiceNoteXeon.includes(q)) return replygcxeon("The name does not exist in the database")
 let wanu = VoiceNoteXeon.indexOf(q)
 VoiceNoteXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/togevn.json', JSON.stringify(VoiceNoteXeon))
-fs.unlinkSync(`./TogeMedia/audio/${q}.mp3`)
+fs.writeFileSync('./lib/database/auto_reply/vn.json', JSON.stringify(VoiceNoteXeon))
+fs.unlinkSync(`./lib/Media/audio/${q}.mp3`)
 replygcxeon(`Success deleting vn ${q}`)
 }
 break
@@ -3886,8 +3886,8 @@ let teks = `${text}`
 if (ZipXeon.includes(teks)) return replygcxeon("This name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 ZipXeon.push(teks)
-await fsx.copy(delb, `./TogeMedia/zip/${teks}.zip`)
-fs.writeFileSync('./TogeMedia/database/zip.json', JSON.stringify(ZipXeon))
+await fsx.copy(delb, `./lib/Media/zip/${teks}.zip`)
+fs.writeFileSync('./lib/database/auto_reply/zip.json', JSON.stringify(ZipXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Success Adding zip\nTo check type ${prefix}listzip`)
 }
@@ -3902,8 +3902,8 @@ let teks = `${text}`
 if (!ZipXeon.includes(teks)) return replygcxeon("This name does not exist in the database")
 let wanu = ZipXeon.indexOf(teks)
 ZipXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/zip.json', JSON.stringify(ZipXeon))
-fs.unlinkSync(`./TogeMedia/zip/${teks}.zip`)
+fs.writeFileSync('./lib/database/auto_reply/zip.json', JSON.stringify(ZipXeon))
+fs.unlinkSync(`./lib/Media/zip/${teks}.zip`)
 replygcxeon(`Successfully deleted zip ${teks}`)
 }
 }
@@ -3927,8 +3927,8 @@ let teks = `${text}`
 if (ApkXeon.includes(teks)) return replygcxeon("This name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 apknye.push(teks)
-await fsx.copy(delb, `./TogeMedia/apk/${teks}.apk`)
-fs.writeFileSync('./TogeMedia/database/apk.json', JSON.stringify(ApkXeon))
+await fsx.copy(delb, `./lib/Media/apk/${teks}.apk`)
+fs.writeFileSync('./lib/database/auto_reply/apk.json', JSON.stringify(ApkXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Successful Adding apk\nTo Check type ${prefix}listapk`)
 }
@@ -3943,8 +3943,8 @@ let teks = `${text}`
 if (!ApkXeon.includes(teks)) return replygcxeon("This name does not exist in the database")
 let wanu = ApkXeon.indexOf(teks)
 ApkXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/apk.json', JSON.stringify(ApkXeon))
-fs.unlinkSync(`./TogeMedia/apk/${teks}.apk`)
+fs.writeFileSync('./lib/database/auto_reply/apk.json', JSON.stringify(ApkXeon))
+fs.unlinkSync(`./lib/Media/apk/${teks}.apk`)
 replygcxeon(`Successfully deleted Apk ${teks}`)
 }
 }
@@ -3968,8 +3968,8 @@ let teks = `${text}`
 if (DocXeon.includes(teks)) return replygcxeon("This name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 DocXeon.push(teks)
-await fsx.copy(delb, `./TogeMedia/doc/${teks}.pdf`)
-fs.writeFileSync('./TogeMedia/database/doc.json', JSON.stringify(DocXeon))
+await fsx.copy(delb, `./lib/Media/doc/${teks}.pdf`)
+fs.writeFileSync('./lib/database/auto_reply/doc.json', JSON.stringify(DocXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Successful Adding Pdf\nTo check type ${prefix}listpdf`)
 }
@@ -3984,8 +3984,8 @@ let teks = `${text}`
 if (!DocXeon.includes(teks)) return replygcxeon("This name does not exist in the database")
 let wanu = DocXeon.indexOf(teks)
 DocXeon.splice(wanu, 1)
-fs.writeFileSync('./TogeMedia/database/doc.json', JSON.stringify(DocXeon))
-fs.unlinkSync(`./TogeMedia/doc/${teks}.pdf`)
+fs.writeFileSync('./lib/database/auto_reply/doc.json', JSON.stringify(DocXeon))
+fs.unlinkSync(`./lib/Media/doc/${teks}.pdf`)
 replygcxeon(`Successfully deleted pdf ${teks}`)
 }
 }
@@ -4186,7 +4186,7 @@ await xeonquotx.quoted.copyNForward(m.chat, true)
 }
 break
 case 'obfus': case 'obfuscate':{
-if (!q) return replygcxeon(`Example ${prefix+command} const xeonbot = require('baileys')`)
+if (!q) return replygcxeon(`Example ${prefix+command} const togebug = require('baileys')`)
 let meg = await obfus(q)
 replygcxeon(`Success
 ${meg.result}`)
@@ -4216,8 +4216,8 @@ case 'yts': case 'ytsearch': {
             }
             break
             case 'play':  case 'song': {
-if (!text) return replygcxeon(`Example : ${prefix + command} anime whatsapp status`)
-const xeonplaymp3 = require('./lib/ytdl')
+if (!text) return replygcxeon(`Example : ${prefix + command} *mhd full d*`)
+const xeonplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
         let search = await yts(text)
         let anup3k = search.videos[0]
@@ -4242,7 +4242,7 @@ await fs.unlinkSync(pl.path)
 }
 break
 case 'ytmp3': case 'ytaudio':
-let xeonaudp3 = require('./lib/ytdl')
+let xeonaudp3 = require('./lib/ytdl2')
 if (args.length < 1 || !isUrl(text) || !xeonaudp3.isYTUrl(text)) return replygcxeon(`Where's the yt link?\nExample: ${prefix + command} https://youtube.com/shorts/YQf-vMjDuKY?feature=share`)
 let audio = await xeonaudp3.mp3(text)
 await XeonBotInc.sendMessage(m.chat,{
@@ -4262,7 +4262,7 @@ await XeonBotInc.sendMessage(m.chat,{
 await fs.unlinkSync(audio.path)
 break
 case 'ytmp4': case 'ytvideo': {
-const xeonvidoh = require('./lib/ytdl')
+const xeonvidoh = require('./lib/ytdl2')
 if (args.length < 1 || !isUrl(text) || !xeonvidoh.isYTUrl(text)) replygcxeon(`Where is the link??\n\nExample : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`)
 const vid=await xeonvidoh.mp4(text)
 const ytc=`
@@ -4277,7 +4277,7 @@ await XeonBotInc.sendMessage(m.chat,{
 }
 break
 case 'git': case 'gitclone':
-if (!args[0]) return replygcxeon(`Where is the link?\nExample :\n${prefix}${command} https://github.com/toge012345/TogeMedia`)
+if (!args[0]) return replygcxeon(`Where is the link?\nExample :\n${prefix}${command} https://github.com/toge012345/lib/Media`)
 if (!isUrl(args[0]) && !args[0].includes('github.com')) return replygcxeon(`Link invalid!!`)
 let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let [, user, repo] = args[0].match(regex1) || []
@@ -4614,192 +4614,192 @@ case 'ringtone': {
 	    break
 case 'tiktokgirl':
 await XeonStickWait()
-var asupan = JSON.parse(fs.readFileSync('./src/media/tiktokvids/tiktokgirl.json'))
+var asupan = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/tiktokgirl.json'))
 var hasil = pickRandom(asupan)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokghea':
 await XeonStickWait()
-var gheayubi = JSON.parse(fs.readFileSync('./src/media/tiktokvids/gheayubi.json'))
+var gheayubi = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/gheayubi.json'))
 var hasil = pickRandom(gheayubi)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokbocil':
 await XeonStickWait()
-var bocil = JSON.parse(fs.readFileSync('./src/media/tiktokvids/bocil.json'))
+var bocil = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/bocil.json'))
 var hasil = pickRandom(bocil)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktoknukhty':
 await XeonStickWait()
-var ukhty = JSON.parse(fs.readFileSync('./src/media/tiktokvids/ukhty.json'))
+var ukhty = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/ukhty.json'))
 var hasil = pickRandom(ukhty)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktoksantuy':
 await XeonStickWait()
-var santuy = JSON.parse(fs.readFileSync('./src/media/tiktokvids/santuy.json'))
+var santuy = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/santuy.json'))
 var hasil = pickRandom(santuy)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokkayes':
 await XeonStickWait()
-var kayes = JSON.parse(fs.readFileSync('./src/media/tiktokvids/kayes.json'))
+var kayes = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/kayes.json'))
 var hasil = pickRandom(kayes)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktokpanrika':
 await XeonStickWait()
-var rikagusriani = JSON.parse(fs.readFileSync('./src/media/tiktokvids/panrika.json'))
+var rikagusriani = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/panrika.json'))
 var hasil = pickRandom(rikagusriani)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'tiktoknotnot':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokvids/notnot.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokvids/notnot.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }}, { quoted: m })
 break
 case 'chinese':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/china.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/china.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'hijab':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/hijab.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/hijab.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'indo':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/indonesia.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/indonesia.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'japanese':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/japan.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/japan.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'korean':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/korea.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/korea.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'malay':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/malaysia.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/malaysia.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'randomgirl':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/random.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/random.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'randomboy':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/random2.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/random2.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'thai':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/thailand.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/thailand.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'vietnamese':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/tiktokpics/vietnam.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/tiktokpics/vietnam.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'aesthetic':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/aesthetic.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/aesthetic.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'antiwork':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/antiwork.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/antiwork.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'blackpink':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/blackpink.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/blackpink.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'bike':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/bike.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/bike.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'boneka':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/boneka.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/boneka.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'cosplay':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/cosplay.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/cosplay.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'cat':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/cat.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/cat.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'doggo':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/doggo.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/doggo.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'justina':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/justina.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/justina.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'kayes':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/kayes.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/kayes.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'kpop':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/kpop.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/kpop.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'notnot':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/notnot.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/notnot.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'car':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/car.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/car.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'couplepp': case 'ppcouple': {
-let anu = require('./src/media/randompics/ppcouple.json')
+let anu = require('./lib/src/media/randompics/ppcouple.json')
 let random = anu[Math.floor(Math.random() * anu.length)]
 XeonBotInc.sendMessage(from, { image: { url: random.male }, caption: `Couple pp for male` }, { quoted: m })
 XeonBotInc.sendMessage(from, { image: { url: random.female }, caption: `Couple pp for female` }, { quoted: m })
@@ -4807,49 +4807,49 @@ XeonBotInc.sendMessage(from, { image: { url: random.female }, caption: `Couple p
 break
 case 'profilepic':  case 'profilepicture':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/profile.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/profile.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'pubg':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/pubg.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/pubg.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'rose':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/rose.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/rose.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'ryujin':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/ryujin.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/ryujin.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'ulzzangboy':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/ulzzangboy.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/ulzzangboy.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'ulzzanggirl':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/ulzzanggirl.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/ulzzanggirl.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'wallml': case 'wallpaperml':case 'mobilelegend':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/wallml.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/wallml.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
 case 'wallpaperphone': case 'wallphone':
 await XeonStickWait()
-var notnot = JSON.parse(fs.readFileSync('./src/media/randompics/wallhp.json'))
+var notnot = JSON.parse(fs.readFileSync('./lib/src/media/randompics/wallhp.json'))
 var hasil = pickRandom(notnot)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url } }, { quoted: m })
 break
@@ -4974,7 +4974,7 @@ isForwarded: true,
 "body": `${ownername}`,
 "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": fs.readFileSync(`./TogeMedia/theme/togepic.jpg`),
+"thumbnail": fs.readFileSync(`./lib/theme/thumb.jpg`),
 "sourceUrl": `${wagc}`}}},
 { quoted: m})        
             }
@@ -4998,7 +4998,7 @@ isForwarded: true,
 "body": `${ownername}`,
 "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": fs.readFileSync(`./TogeMedia/theme/togepic.jpg`),
+"thumbnail": fs.readFileSync(`./lib/theme/thumb.jpg`),
 "sourceUrl": `${wagc}`}}},
 { quoted: m})        
             }
@@ -5188,7 +5188,7 @@ mentionedJid:[xeonshimts],
 "containsAutoReply": true,
 "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": fs.readFileSync(`./TogeMedia/theme/togepic.jpg`),
+"thumbnail": fs.readFileSync(`./lib/theme/thumb.jpg`),
 "sourceUrl": `${wagc}`
 }
 }
@@ -5834,7 +5834,7 @@ break
 case 'milf':
 if (!m.isGroup) return XeonStickGroup()
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/milf.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/milf.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break 
@@ -5851,7 +5851,7 @@ case 'blowjob':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/blowjob.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/blowjob.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5859,7 +5859,7 @@ case 'cuckold':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/cuckold.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/cuckold.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5867,7 +5867,7 @@ case 'eba':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/eba.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/eba.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5875,7 +5875,7 @@ case 'gangbang':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/gangbang.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/gangbang.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5883,7 +5883,7 @@ case 'nsfwloli':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/nsfwloli.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/nsfwloli.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5891,7 +5891,7 @@ case 'pussy':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/pussy.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/pussy.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5899,7 +5899,7 @@ case 'yuri':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/yuri.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/yuri.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5907,7 +5907,7 @@ case 'zettai':
 if (!m.isGroup) return XeonStickGroup()
 	if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/zettai.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/zettai.json'))
 var xeonyresult = pickRandom(ahegaonsfw)
 XeonBotInc.sendMessage(m.chat, { caption: mess.success, image: { url: xeonyresult.url } }, { quoted: m })
 break
@@ -5925,7 +5925,7 @@ case 'gifhentai':
 if (!m.isGroup) return XeonStickGroup()
 if (!AntiNsfw) return replygcxeon(mess.nsfw)
 await XeonStickWait()
-var ahegaonsfw = JSON.parse(fs.readFileSync('./src/media/nsfw/gifs.json'))
+var ahegaonsfw = JSON.parse(fs.readFileSync('./lib/src/media/nsfw/gifs.json'))
 var xeonyresultx = pickRandom(ahegaonsfw)
     await XeonBotInc.sendMessage(m.chat,{video:xeonyresultx, gifPlayback:true },{quoted:m}).catch(err => {
     })
@@ -6099,7 +6099,7 @@ case 'rosestext':
 case 'naturetypography':
 case 'quotesunder':
 case 'shinetext':{
-if (!q) return replygcxeon(`Example : ${prefix+command} TOGE-MD`) 
+if (!q) return replygcxeon(`Example : ${prefix+command} *TOGE-BUG-V2*`) 
 await XeonStickWait()
 const photooxy = require('./lib/photooxy')
 let link
@@ -6165,7 +6165,7 @@ case 'freecreate':
 case 'galaxystyle':
 case 'lighteffects':{
 
-if (!q) return replygcxeon(`Example : ${prefix+command} TOGE-MD`) 
+if (!q) return replygcxeon(`Example : ${prefix+command} *TOGE-BUG-V2*`) 
 await XeonStickWait()
 let link
 if (/glitchtext/.test(command)) link = 'https://en.ephoto360.com/create-digital-glitch-text-effects-online-767.html'
