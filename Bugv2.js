@@ -322,7 +322,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
         }
         
         //fake bug
-        const fbug2 = {key: {participant: "0@s.whatsapp.net","remoteJid": "status@broadcast"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${xeontext1}`, "caption": `${xeontext1}`, 'jpegThumbnail': thumb}}}
+        const fbug2 = {key: {participant: "0@s.whatsapp.net","remoteJid": "status@broadcast"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${bugtext1}`, "caption": `${bugtext1}`, 'jpegThumbnail': thumb}}}
         let fbug = { 
             key: { 
                fromMe: false, 
@@ -384,7 +384,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":botname, "h": wm,'seconds': '359996400', 'caption': `${pushname}`, 'jpegThumbnail': thumb}}}
 		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: wm,jpegThumbnail: thumb}}}
 		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': ownername, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ownername},;;;\nFN:${ownername}\nitem1.TEL;waid=13038480418:13038480418\nitem1.X-ABLabel:Mobile\nEND:VCARD`, 'jpegThumbnail': thumb, thumbnail: thumb,sendEphemeral: true}}}
-	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": fs.readFileSync('./TogeMedia/theme/togepic.jpg'),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
+	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": fs.readFileSync('./lib/theme/thumb.jpg'),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 	    const frpayment = {
 	key: {
 		remoteJid: '0@s.whatsapp.net',
@@ -1885,7 +1885,7 @@ case 'block': case 'ban': {
                 if (!XeonTheCreator) return XeonStickOwner()
                 try {
                    const getCase = (cases) => {
-                      return "case" + `'${cases}'` + fs.readFileSync("TOGE-MD.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
+                      return "case" + `'${cases}'` + fs.readFileSync("Bugv2.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
                    }
                    replygcxeon(`${getCase(q)}`)
                 } catch {
@@ -2223,7 +2223,7 @@ if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
 	if (!m.isGroup) return XeonStickGroup()
 	if (!isBotAdmins) return XeonStickBotAdmin()
 if (!text) return replygcxeon(`Enter the number you want to invite to the group\n\nExample :\n*${prefix + command}* 6283833304947`)
-if (text.includes('+')) return replygcxeon(`Enter the number together without *+*`)
+if (text.includes('+')) return replygcxeon(`Enter the number the without *+*`)
 if (isNaN(text)) return replygcxeon(`Enter only the numbers plus your country code without spaces`)
 let group = m.chat
 let link = 'https://chat.whatsapp.com/' + await XeonBotInc.groupInviteCode(group)
@@ -2979,7 +2979,7 @@ break
                 break
 case 'sc': case 'script': case 'donate': case 'donate': case 'cekupdate': case 'updatebot': case 'cekbot': case 'sourcecode': {
 let me = m.sender
-let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nHi @${me.split('@')[0]} 👋\nDont forget to donate yeah🍜 👇 https://telegra.ph/file/e032a107c82cac9702783.jpg`
+let teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nHi @${me.split('@')[0]}`
 sendXeonBotIncMessage(from, { 
 text: teks,
 mentions:[sender],
@@ -6661,45 +6661,42 @@ case 'blur':
             let latensie = speed() - timestampe
             let a = db.data.users[sender]
             let me = m.sender
-            let xmenu_oh = `𝗵𝗶 ${pushname} 𝗜 𝗮𝗺 "𝗧𝗢𝗚𝗘-𝗠𝗗" 𝗮 𝗺𝘂𝗹𝘁𝗶𝗳𝘂𝗻𝗰𝘁𝗶𝗼𝗻𝗮𝗹 𝗯𝗼𝘁 𝘄𝗵𝗼 𝗰𝗮𝗻 𝗵𝗲𝗹𝗽 𝘆𝗼𝘂 𝘄𝗶𝘁𝗵 𝗱𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝘁 𝗰𝗼𝗱𝗶𝗻𝗴 𝘁𝗮𝘀𝗸𝘀 𝗯𝘆 𝘁𝗼𝗴𝗲.
+            let xmenu_oh = `𝗵𝗶 👋 ${pushname} 
 	    
 ┏━⍟ 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊 ⍟
-┃✺ 𝗨𝘀𝗲𝗿 : ${pushname}
-┃✺ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-┃✺ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-┃✺ 𝗕𝗼𝘁 : ${botname}
-┃✺ 𝗢𝘄𝗻𝗲𝗿 : +${ownernumber}
-┃✺ 𝗣𝗿𝗲𝗳𝗶𝘅 :  [ ${xprefix} ]
-┃✺ 𝗠𝗼𝗱𝗲 : ${XeonBotInc.public ? 'Public' : `Self`}
-┃✺ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-┃✺ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-┃✺ 𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.data.users).length} User
-┃✺ 𝗧𝗼𝘁𝗮𝗹 𝗛𝗶𝘁 : ${global.db.data.settings[botNumber].totalhit} Hit
-┃✺ 𝗧𝗼𝘁𝗮𝗹 𝗖𝗵𝗮𝘁 : ${Object.keys(global.db.data.chats).length} Chat/Gc
+┃ ❏ 𝗨𝘀𝗲𝗿 : ${pushname}
+┃ ❏ 𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+┃ ❏ 𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+┃ ❏ 𝗕𝗼𝘁 : ${botname}
+┃ ❏ 𝗢𝘄𝗻𝗲𝗿 : +${ownernumber}
+┃ ❏ 𝗣𝗿𝗲𝗳𝗶𝘅 :  [ ${xprefix} ]
+┃ ❏ 𝗠𝗼𝗱𝗲 : ${XeonBotInc.public ? 'Public' : `Self`}
+┃ ❏ 𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+┃ ❏ 𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
 ┗━━━━━━━━━━⊛
-┏━━⍟𝙏𝙄𝙈𝙀 𝙄𝙉𝙁𝙊 ⍟ 
-┃✺ 𝗧𝗶𝗺𝗲 : ${xtime}
-┃✺ 𝗗𝗮𝘁𝗲 : ${xdate}
+┏━━⍟ 𝙏𝙄𝙈𝙀 𝙄𝙉𝙁𝙊 ⍟ 
+┃ ❏ 𝗧𝗶𝗺𝗲 : ${xtime}
+┃ ❏ 𝗗𝗮𝘁𝗲 : ${xdate}
 ┗━━━━━━━━━⊛
 ┏━━━━━━━━━⍟
-┃✺ ${xprefix}allmenu
-┃✺ ${xprefix}downloadmenu
-┃✺ ${xprefix}funmenu
-┃✺ ${xprefix}aimenu
-┃✺ ${xprefix}groupmenu
-┃✺ ${xprefix}ownermenu
-┃✺ ${xprefix}photooxymenu
-┃✺ ${xprefix}ephoto360menu
-┃✺ ${xprefix}makermenu
-┃✺ ${xprefix}animemenu
-┃✺ ${xprefix}nsfwmenu
-┃✺ ${xprefix}randomphotomenu
-┃✺ ${xprefix}randomvideomenu
-┃✺ ${xprefix}stickermenu
-┃✺ ${xprefix}databasemenu
-┃✺ ${xprefix}stalkermenu
-┃✺ ${xprefix}bugmenu
-┃✺ ${xprefix}othermenu
+┃ ❏ ${xprefix}𝗮𝗹𝗹𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗱𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗳𝘂𝗻𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗮𝗶𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗴𝗿𝗼𝘂𝗽𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗼𝘄𝗻𝗲𝗿𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗽𝗵𝗼𝘁𝗼𝗼𝘅𝘆𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗲𝗽𝗵𝗼𝘁𝗼𝟯𝟲𝟬𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗺𝗮𝗸𝗲𝗿𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗮𝗻𝗶𝗺𝗲𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗻𝘀𝗳𝘄𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗿𝗮𝗻𝗱𝗼𝗺𝗽𝗵𝗼𝘁𝗼𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗿𝗮𝗻𝗱𝗼𝗺𝘃𝗶𝗱𝗲𝗼𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝘀𝘁𝗶𝗰𝗸𝗲𝗿𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗱𝗮𝘁𝗮𝗯𝗮𝘀𝗲𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝘀𝘁𝗮𝗹𝗸𝗲𝗿𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗯𝘂𝗴𝗺𝗲𝗻𝘂
+┃ ❏ ${xprefix}𝗼𝘁𝗵𝗲𝗿𝗺𝗲𝗻𝘂
 ┗━━━━━━━━━━━━━━━⊛`
 if (typemenu === 'v1') {
                     XeonBotInc.sendMessage(m.chat, {
