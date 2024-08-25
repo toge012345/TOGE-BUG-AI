@@ -15,7 +15,7 @@ global.location = "Africa, Gabon, Libreville" //ur location
 global.botname = '𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸' //ur bot name
 global.ownernumber = '13038480418' //ur owner number
 global.ownername = '𝚃𝙾𝙶𝙴 𝙸𝙽𝚄𝙼𝙰𝙺𝙸' //ur owner name
-global.websitex = "https://youtube.com/@kenzo3146?si=Lqo5o0SRMEOsPr0D"
+global.websitex = "https://chat.whatsapp.com/JQ4s2pJuBReE7YL9wKJPHo"
 global.wagc = "https://whatsapp.com/channel/0029VaiuD4s4IBhI0fzbv40Z"
 global.themeemoji = '👾'
 global.wm = "𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸"
