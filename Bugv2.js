@@ -98,7 +98,7 @@ const {
 } = require('./lib/premiun')
 //data
 let ntnsfw = JSON.parse(fs.readFileSync('./lib/src/data/function/nsfw.json'))
-let bad = JSON.parse(fs.readFileSync('../lib/src/data/function/badword.json'))
+let bad = JSON.parse(fs.readFileSync('./lib/src/data/function/badword.json'))
 let premium = JSON.parse(fs.readFileSync('./lib/database/premium.json'))
 const owner = JSON.parse(fs.readFileSync('./lib/database/owner.json'))
 //media
