@@ -2787,77 +2787,65 @@ break
                     })
             break
                 //bot status
-            case'ping': 
-
-    let thumbnail = './lib/theme/thumb.jpg';
-
-    let fgg = {
-
-        key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' },
-
-        message: {
-
-            contactMessage: {
-
-                displayName: 'TOGE-BUG-V2 👾',
-
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:TOGE-BUG-V2 👾\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:owner number\nEND:VCARD`
-
-            }
-
-        }
-
-    };
-
-
-
-    let pingMsg = await XeonBotInc.sendMessage(m.chat, { text: '🔄 Checking connectivity...' }, { quoted: fgg });
-
-    await sleep(2000);
-
-    let timestamp = speed();
-
-
-
-    await exec('neofetch --stdout', async (error, stdout) => {
-
-        let latency = (speed() - timestamp).toFixed(4);
-
-
-
-        await XeonBotInc.relayMessage(
-
-            m.chat,
-
-            {
-
-                protocolMessage: {
-
-                    key: pingMsg.key,
-
-                    type: 14,
-
-                    editedMessage: {
-
-                        conversation: `⚡ Speed test result: ${latency} ms 🚀`
-
-                    }
-
+            case 'ping': case 'botstatus': case 'statusbot': case 'p': {
+	const used = process.memoryUsage()
+                const cpus = os.cpus().map(cpu => {
+                    cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
+			        return cpu
+                })
+                const cpu = cpus.reduce((last, cpu, _, { length }) => {
+                    last.total += cpu.total
+                    last.speed += cpu.speed / length
+                    last.times.user += cpu.times.user
+                    last.times.nice += cpu.times.nice
+                    last.times.sys += cpu.times.sys
+                    last.times.idle += cpu.times.idle
+                    last.times.irq += cpu.times.irq
+                    return last
+                }, {
+                    speed: 0,
+                    total: 0,
+                    times: {
+			            user: 0,
+			            nice: 0,
+			            sys: 0,
+			            idle: 0,
+			            irq: 0
                 }
+                })
+                let timestamp = speed()
+                let latensi = speed() - timestamp
+                neww = performance.now()
+                oldd = performance.now()
+                respon = `
+Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
 
-            },
+💻 Info Server
+RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
-            {}
+_NodeJS Memory Usaage_
+${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
 
-        );
-
-
-
-        await XeonBotInc.sendMessage(m.chat, { text: '🎉 Connection is stable and fast!' }, { quoted: pingMsg });
-
-    });
-
-    break;
+${cpus[0] ? `_Total CPU Usage_
+${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
+_CPU Core(s) Usage (${cpus.length} Core CPU)_
+${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
+                `.trim()
+	XeonBotInc.relayMessage(m.chat,  {
+        requestPaymentMessage: {
+          currencyCodeIso4217: 'INR',
+          amount1000: 999999999,
+          requestFrom: m.sender,
+          noteMessage: {
+          extendedTextMessage: {
+          text: respon,
+          contextInfo: {
+          externalAdReply: {
+          showAdAttribution: true
+          }}}}}}, {})
+    }
+	
+	break
 	case 'repo': case 'repository': {
   try {
     const [, username, repoName] = botscript.match(/github\.com\/([^/]+)\/([^/]+)/)
