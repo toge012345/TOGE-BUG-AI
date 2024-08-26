@@ -17,6 +17,8 @@ const path = require('path')
 const util = require('util')
 const { color } = require('./lib/color')
 const chalk = require('chalk')
+const yts = require('yt-search')
+const ytdl = require('@distube/ytdl-core')
 const moment = require('moment-timezone')
 const cron = require('node-cron')
 const speed = require('performance-now')
@@ -9019,7 +9021,7 @@ case "bugv8": {
     "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
     " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
     [whatsappNumber]
-  );
+  }
 }
 break;
 case 'bugv9': case 'bugv10': {
