@@ -321,32 +321,6 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
             }
         }
         
-        //fake bug
-        const fbug2 = {key: {participant: "0@s.whatsapp.net","remoteJid": "status@broadcast"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${bugtext1}`, "caption": `${bugtext1}`, 'jpegThumbnail': thumb}}}
-        let fbug = { 
-            key: { 
-               fromMe: false, 
-               participant: `0@s.whatsapp.net`,  
-               ...(m.chat ? {  remoteJid: "status@broadcast"  } : {}) 
-            },
-               message: {  
-                  "imageMessage": { 
-                     "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", 
-                     "mimetype": "image/jpeg", 
-                     "caption": `${xeontext3}`,
-                     "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", 
-                     "fileLength": "999999999",
-                     "height": 999999999,
-                     "width": 999999999,
-                     "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=",
-                     "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
-                     "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
-                     "mediaKeyTimestamp": "1610993486",
-                     "jpegThumbnail": await reSize(thumb, 100, 100),
-                     "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
-                  }
-               }
-            }
             //end fbug
             
         let fstatus = { 
