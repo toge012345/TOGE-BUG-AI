@@ -9039,7 +9039,7 @@ await locationxeony(target, force)
 }
 await replygcxeon(`Successfully Send Bug to ${xeonyvictim} Using ${command}. ✅`)
 }
-break
+break;
 
                 default:
                 if (budy.startsWith('=>')) {
