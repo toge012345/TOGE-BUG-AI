@@ -2280,7 +2280,7 @@ break
 ├ *${xeonytimewisher} 😄* 
 ╰─┬────❍
 ╭─┴❍「 𝙸𝙽𝙵𝙾 」❍
-├ *bot: TOGE-BUG-AI*
+├ *bot:* 𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝚅𝟸
 ├ *Github:* https://github.com/toge012345
 ├ *chanel:* https://whatsapp.com/channel/0029VaiuD4s4IBhI0fzbv40Z
 ╰─┬────❍ ${readmore}
