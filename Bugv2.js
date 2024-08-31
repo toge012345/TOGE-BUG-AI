@@ -1,4 +1,3 @@
-
 const { default: makeWaSocket, useMultiFileAuthState, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@whiskeysockets/baileys')
 const os = require('os')
 const fs = require('fs') 
@@ -655,18 +654,18 @@ senddocu(buffer)
                 if (m.mentionedJid.length !== 0) {
                     for (let i = 0; i < m.mentionedJid.length; i++) {
                         premium.splice(getPremiumPosition(m.mentionedJid[i], premium), 1);
-                        fs.writeFileSync("./database/premium.json", JSON.stringify(premium));
+                        fs.writeFileSync("./lib/database/premium.json", JSON.stringify(premium));
                     }
                     replygcxeon("Delete success")
                 } else {
                     premium.splice(getPremiumPosition(args[0] + "@s.whatsapp.net", premium), 1);
-                    fs.writeFileSync("./database/premium.json", JSON.stringify(premium));
+                    fs.writeFileSync("./lib/database/premium.json", JSON.stringify(premium));
                     replygcxeon("Success")
                 }
                 break
             case 'listprem': {
                 if (!isCreator) return replygcxeon(mess.owner)
-                let data = require("./database/premium.json")
+                let data = require("./lib/database/premium.json")
                 let txt = `*------「 LIST PREMIUM 」------*\n\n`
                 for (let i of data) {
                     txt += `Number : ${i.id}\n`
@@ -929,7 +928,7 @@ senddocu(buffer)
             case 'getcase':
                 if (!isCreator) return replygcxeon(mess.owner)
                 const getCase = (cases) => {
-                    return "case" + `'${cases}'` + fs.readFileSync("TOGE-BUG-MD.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
+                    return "case" + `'${cases}'` + fs.readFileSync("Bugv2.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
                 }
                 replygcxeon(`${getCase(q)}`)
                 break
