@@ -148,7 +148,7 @@ isForwarded: true,
 "body": `${ownername}`,
 "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": fs.readFileSync(`./lib/Media/thumb.jpg`),
+"thumbnail": fs.readFileSync(`./lib/theme/thumb.jpg`),
 "sourceUrl": `${link}`}}},
 { quoted: m})
 }
@@ -1844,7 +1844,7 @@ break
                 replygcxeon(`@${m.sender.split('@')[0]} Currently AFK\nWith reason : ${reason}`)
                 break
 case 'play':  case 'song': {
-if (!text) return replygcxeon(`Example : ${prefix + command} anime whatsapp status`)
+if (!text) return replygcxeon(`Example : ${prefix + command} *anime song*`)
 const xeonplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
         let search = await yts(text)
@@ -2418,7 +2418,7 @@ if (typemenu === 'v1') {
                     })
                     } else if (typemenu === 'v2') {
                     XeonBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./lib/Media/bug.mp4'),
+      video: fs.readFileSync('./lib/theme/bug.mp4'),
       gifPlayback: true,
       caption: xeonmenuoh,
       contextInfo: {
@@ -2436,7 +2436,7 @@ if (typemenu === 'v1') {
                     })
                 } else if (typemenu === 'v3') {
                     XeonBotInc.sendMessage(m.chat, {
-                        video: fs.readFileSync('./lib/Media/bug.mp4'),
+                        video: fs.readFileSync('./lib/theme/bug.mp4'),
                         caption: xeonmenuoh,
                         gifPlayback: true
                     }, {
