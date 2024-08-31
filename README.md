@@ -6,30 +6,13 @@
 </p>
 
 <p align="center">
-**TOGE-BUG-AI Multi Device is a whatsapp bot developed by <a href="https://github.com/toge012345" target="_blank">toge</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs</a>. Dont forget to give a star bro.
+TOGE-BUG-AI Multi Device is a whatsapp bot developed by <a href="https://github.com/toge012345" target="_blank">toge</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs</a>. Dont forget to give a star bro.
 </p>
 
 <p align="center">
-<a href="https://youtu.be/mu5m6aB6P5k"><img title="Size" src="https://img.shields.io/badge/Tutorial-Video-green"></a>
+<a href="https://whatsapp.com/channel/0029VaiuD4s4IBhI0fzbv40Z"><img title="Size" src="https://img.shields.io/badge/Tutorial-Video-green"></a>
 </p>
 
-------
-
-# ```Bot Info```
-<p align="center">
-<a href="https://github.com/toge012345/followers"><img title="Followers" src="https://img.shields.io/github/followers/DGXeon?color=red&style=flat-square"></a>
-<a href="https://github.com/toge012345/TOGE-BUG-AI/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/toge012345/TOGE-BUG-AI?color=blue&style=flat-square"></a>
-<a href="https://github.com/toge012345/TOGE-BUG-AI/network/members"><img title="Forks" src="https://img.shields.io/github/forks/toge012345/TOGE-BUG-AI?color=red&style=flat-square"></a>
-<a href="https://github.com/toge012345/TOGE-BUG-AI/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/toge012345/TOGE-BUG-AI?label=Watchers&color=blue&style=flat-square"></a>
-<a href="https://github.com/toge012345/TOGE-BUG-AI"><img title="Open Source" src="https://img.shields.io/badge/Author-Xeon%20Bot%20Inc.-red?v=103"></a>
-<a href="https://github.com/toge012345/TOGE-BUG-AI/"><img title="Size" src="https://img.shields.io/github/repo-size/toge012345/TOGE-BUG-AI?style=flat-square&color=green"></a>
-<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Ftoge012345%2FTOGE-BUG-AI&count_bg=%2379C83D&title_bg=%23555555&icon=probot.svg&icon_color=%2300FF6D&title=hits&edge_flat=false"/></a>
-<a href="https://github.com/toge012345/TOGE-BUG-AI/graphs/commit-activity"><img height="20" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>&nbsp;&nbsp;
-</p>
-<p align='center'>
-    </p>
-
--------
 
 ## ```Connect With Me```
 <p align="center">
