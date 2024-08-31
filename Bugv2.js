@@ -39,20 +39,20 @@ const xsteek = fs.readFileSync(`./lib/virtex/x.webp`)
 const o = fs.readFileSync(`./lib/virtex/o.jpg`)
 
 //database
-let premium = JSON.parse(fs.readFileSync('./database/premium.json'))
-let _owner = JSON.parse(fs.readFileSync('./database/owner.json'))
-let owner = JSON.parse(fs.readFileSync('./database/owner.json'))
-let _afk = JSON.parse(fs.readFileSync('./database/afk-user.json'))
-let hit = JSON.parse(fs.readFileSync('./database/total-hit-user.json'))
+let premium = JSON.parse(fs.readFileSync('./lib/database/premium.json'))
+let _owner = JSON.parse(fs.readFileSync('./lib/database/owner.json'))
+let owner = JSON.parse(fs.readFileSync('./lib/database/owner.json'))
+let _afk = JSON.parse(fs.readFileSync('./lib/database/afk-user.json'))
+let hit = JSON.parse(fs.readFileSync('./lib/database/total-hit-user.json'))
 
 //autorep
-const VoiceNoteXeon = JSON.parse(fs.readFileSync('./database/autoreply/vn.json'))
-const StickerXeon = JSON.parse(fs.readFileSync('./database/autoreply/sticker.json'))
-const ImageXeon = JSON.parse(fs.readFileSync('./database/autoreply/image.json'))
-const VideoXeon = JSON.parse(fs.readFileSync('./database/autoreply/video.json'))
-const DocXeon = JSON.parse(fs.readFileSync('./database/autoreply/doc.json'))
-const ZipXeon = JSON.parse(fs.readFileSync('./database/autoreply/zip.json'))
-const ApkXeon = JSON.parse(fs.readFileSync('./database/autoreply/apk.json'))
+const VoiceNoteXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/vn.json'))
+const StickerXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/sticker.json'))
+const ImageXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/image.json'))
+const VideoXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/video.json'))
+const DocXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/doc.json'))
+const ZipXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/zip.json'))
+const ApkXeon = JSON.parse(fs.readFileSync('./lib/database/auto_reply/apk.json'))
 
 //time
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
@@ -149,7 +149,7 @@ isForwarded: true,
 "body": `${ownername}`,
 "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": fs.readFileSync(`./TOGEMedia/thumb.jpg`),
+"thumbnail": fs.readFileSync(`./lib/Media/thumb.jpg`),
 "sourceUrl": `${link}`}}},
 { quoted: m})
 }
@@ -552,33 +552,33 @@ list.push({
         if (command) {
             const cmdadd = () => {
                 hit[0].hit_cmd += 1
-                fs.writeFileSync('./database/total-hit-user.json', JSON.stringify(hit))
+                fs.writeFileSync('./lib/database/total-hit-user.json', JSON.stringify(hit))
             }
             cmdadd()
-            const totalhit = JSON.parse(fs.readFileSync('./database/total-hit-user.json'))[0].hit_cmd
+            const totalhit = JSON.parse(fs.readFileSync('./lib/database/total-hit-user.json'))[0].hit_cmd
         }
         
 for (let BhosdikaXeon of VoiceNoteXeon) {
 if (budy === BhosdikaXeon) {
-let audiobuffy = fs.readFileSync(`./TOGEMedia/audio/${BhosdikaXeon}.mp3`)
+let audiobuffy = fs.readFileSync(`./lib/Media/audio/${BhosdikaXeon}.mp3`)
 XeonBotInc.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 }
 }
 for (let BhosdikaXeon of StickerXeon){
 if (budy === BhosdikaXeon){
-let stickerbuffy = fs.readFileSync(`./TOGEMedia/sticker/${BhosdikaXeon}.webp`)
+let stickerbuffy = fs.readFileSync(`./lib/Media/sticker/${BhosdikaXeon}.webp`)
 XeonBotInc.sendMessage(m.chat, { sticker: stickerbuffy }, { quoted: m })
 }
 }
 for (let BhosdikaXeon of ImageXeon){
 if (budy === BhosdikaXeon){
-let imagebuffy = fs.readFileSync(`./TOGEMedia/image/${BhosdikaXeon}.jpg`)
+let imagebuffy = fs.readFileSync(`./lib/Media/image/${BhosdikaXeon}.jpg`)
 XeonBotInc.sendMessage(m.chat, { image: imagebuffy }, { quoted: m })
 }
 }
 for (let BhosdikaXeon of VideoXeon){
 if (budy === BhosdikaXeon){
-let videobuffy = fs.readFileSync(`./TOGEMedia/video/${BhosdikaXeon}.mp4`)
+let videobuffy = fs.readFileSync(`./lib/Media/video/${BhosdikaXeon}.mp4`)
 XeonBotInc.sendMessage(m.chat, { video: videobuffy }, { quoted: m })
 }
 }
@@ -588,7 +588,7 @@ XeonBotInc.sendMessage(from, { document: teks, mimetype: 'application/vnd.androi
 }
 for (let BhosdikaXeon of ApkXeon) {
 if (budy === BhosdikaXeon) {
-let buffer = fs.readFileSync(`./TOGEMedia/apk/${BhosdikaXeon}.apk`)
+let buffer = fs.readFileSync(`./lib/Media/apk/${BhosdikaXeon}.apk`)
 sendapk(buffer)
 }
 }
@@ -598,7 +598,7 @@ XeonBotInc.sendMessage(from, { document: teks, mimetype: 'application/zip'}, {qu
 }
 for (let BhosdikaXeon of ZipXeon) {
 if (budy === BhosdikaXeon) {
-let buffer = fs.readFileSync(`./TOGEMedia/zip/${BhosdikaXeon}.zip`)
+let buffer = fs.readFileSync(`./lib/Media/zip/${BhosdikaXeon}.zip`)
 sendzip(buffer)
 }
 }
@@ -608,7 +608,7 @@ haikal.sendMessage(from, { document: teks, mimetype: 'application/pdf'}, {quoted
 }
 for (let BhosdikaXeon of DocXeon) {
 if (budy === BhosdikaXeon) {
-let buffer = fs.readFileSync(`./TOGEMedia/doc/${BhosdikaXeon}.pdf`)
+let buffer = fs.readFileSync(`./lib/Media/doc/${BhosdikaXeon}.pdf`)
 senddocu(buffer)
 }
 }
@@ -630,7 +630,7 @@ senddocu(buffer)
                 let getTime = Date.now() - afk.getAfkTime(getId, _afk)
                 let heheh = ms(getTime)
                 _afk.splice(afk.getAfkPosition(m.sender, _afk), 1)
-                fs.writeFileSync('./database/afk-user.json', JSON.stringify(_afk))
+                fs.writeFileSync('./lib/database/afk-user.json', JSON.stringify(_afk))
                 XeonBotInc.sendTextWithMentions(m.chat, `@${m.sender.split('@')[0]} have returned from afk`, m)
             }
         }
