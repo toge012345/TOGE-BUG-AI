@@ -2271,115 +2271,135 @@ break
             case 'menu':
             case 'help':
             case 'alive':
-            case '?':
+            case 'bug':
             case 'allmenu':
-                let xeonmenuoh = `Hello ${pushname}
-*∆ TOGE BUG ALL MENU*
-
-╭––『 ʙᴜɢ ᴀɴᴅʀᴏɪᴅ 』
-┆❏ xandroid 
-┆❏ xandroid2
-┆❏ systemuicrash
-┆❏ xsysui
-╰–––––––––––––––༓
-╭––『 ʙᴜɢ ɪᴏꜱ 』
-┆❏ xios
-┆❏ xios2
-╰–––––––––––––––༓
-╭––『 ʙᴜɢ ɢʀᴏᴜᴘ ᴄʜᴀᴛ 』
-┆❏ CGV 
-╰–––––––––––––––༓
-╭––『 ᴏᴡɴᴇʀ ᴍᴇɴᴜ 』
-┆❏ getsession
-┆❏ deletesession
-┆❏ join
-┆❏ shutdown  
-┆❏ restart
-┆❏ autoread *[option]*
-┆❏ autotyping *[option]*
-┆❏ autorecording *[option]*
-┆❏ autorecordtyp *[option]*
-┆❏ autobio *[option]*
-┆❏ autoswview *[option]*
-┆❏ mode *[option]*
-┆❏ block
-┆❏ unblock 
-┆❏ backup
-┆❏ getcase
-┆❏ addowner
-┆❏ delowner
-╰–––––––––––––––༓
-╭––『 ɢʀᴏᴜᴘ ᴍᴇɴᴜ 』
-┆❏ closetime
-┆❏ opentime
-┆❏ kick
-┆❏ add
-┆❏ promote
-┆❏ demote
-┆❏ setdesc
-┆❏ setppgc
-┆❏ tagall
-┆❏ hidetag
-┆❏ totag
-┆❏ group *[option]*
-┆❏ editinfo
-┆❏ linkgc
-┆❏ revoke
-┆❏ listonline
-╰–––––––––––––––༓
-╭––『 ᴍᴀɪɴ ᴍᴇɴᴜ 』
-┆❏ menu
-┆❏ buypremium
-┆❏ runtime
-┆❏ script
-┆❏ donate
-┆❏ owner
-╰–––––––––––––––༓
-╭––『 ᴄᴏɴᴠᴇʀᴛ ᴍᴇɴᴜ 』
-┆❏ sticker
-┆❏ smeme
-┆❏ take
-┆❏ toimage
-┆❏ tovideo
-┆❏ toaudio
-┆❏ tomp3
-┆❏ tovn
-┆❏ togif
-┆❏ tourl
-┆❏ toqr
-┆❏ toviewonce
-┆❏ fliptext
-┆❏ emojimix
-╰–––––––––––––––༓
-╭––『 ᴅᴀᴛᴀʙᴀsᴇ ᴍᴇɴᴜ 』
-┆❏ addvideo
-┆❏ addimage
-┆❏ addsticker
-┆❏ addvn
-┆❏ addzip
-┆❏ addapk
-┆❏ addpdf
-┆❏ delvideo
-┆❏ delimage
-┆❏ delsticker
-┆❏ delvn
-┆❏ delzip
-┆❏ delapk
-┆❏ delpdf
-┆❏ listvideo
-┆❏ listimage
-┆❏ liststicker
-┆❏ listvn
-┆❏ listzip
-┆❏ listapk
-┆❏ listpdf
-╰–––––––––––––––༓
-╭––『 ᴅᴏᴡɴ ᴍᴇɴᴜ 』
-┆❏ play
-┆❏ ytmp3
-┆❏ ytmp4
-┆❏ sound1 - sound161
-╰–––––––––––––––༓`
+                let xeonmenuoh = `
+╭──❍「 𝐖𝐀-𝐁𝐔𝐆-𝐀𝐈 」❍
+├ *Hi 👋*
+├ *${m.pushName}* 
+├ *${xeonytimewisher} 😄* 
+╰─┬────❍
+╭─┴❍「 𝙸𝙽𝙵𝙾 」❍
+├ *bot: TOGE-BUG-AI*
+├ *Github:* https://github.com/toge012345
+├ *chanel:* https://whatsapp.com/channel/0029VaiuD4s4IBhI0fzbv40Z
+╰─┬────❍ ${readmore}
+╭─┴❍「 𝙾𝚆𝙽𝙴𝚁 𝙼𝙴𝙽𝚄 」❍
+│❏ getsession
+│❏ deletesession
+│❏ join
+│❏ shutdown  
+│❏ restart
+│❏ autoread
+│❏ autotyping
+│❏ autorecording
+│❏ autorecordtyp
+│❏ autobio
+│❏ autoswview
+│❏ mode
+│❏ block
+│❏ unblock 
+│❏ backup
+│❏ getcase
+│❏ addowner
+│❏ delowner
+╰─┬────❍
+╭─┴❍「 𝚅𝙸𝚁𝚃𝙴𝚇 𝙼𝙴𝙽𝚄 」❍
+│❏ xandroid
+│❏ xandroid2
+│❏ bugv1
+│❏ bugv2
+│❏ bugv3
+│❏ bugv4
+│❏ bugv5
+│❏ xios
+│❏ xios2
+│❏ iosx
+│❏ ioskill
+│❏ oneclickall
+│❏ xsamsung
+│❏ xwaweb
+│❏ doublekill
+│❏ triplekill
+│❏ xgc
+│❏ gcbugv1
+│❏ gcbugv2
+│❏ gcbugv3
+│❏ gcbugv4
+│❏ gcbugv5
+│❏ systemuicrash
+│❏ xsysui
+╰─┬────❍
+╭─┴❍「 𝙶𝚁𝙾𝚄𝙿 𝙼𝙴𝙽𝚄 」❍
+│❏ closetime
+│❏ opentime
+│❏ kick
+│❏ add
+│❏ promote
+│❏ demote
+│❏ setdesc
+│❏ setppgc
+│❏ tagall
+│❏ hidetag
+│❏ totag
+│❏ group
+│❏ editinfo
+│❏ linkgc
+│❏ revoke
+│❏ listonline
+╰─┬────❍
+╭─┴❍「 𝙼𝙰𝙸𝙽 𝙼𝙴𝙽𝚄 」❍
+│❏ menu
+│❏ buypremium
+│❏ runtime
+│❏ script
+│❏ donate
+│❏ owner
+╰─┬────❍
+╭─┴❍「 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 𝙼𝙴𝙽𝚄 」❍
+│❏ sticker
+│❏ smeme
+│❏ take
+│❏ toimage
+│❏ tovideo
+│❏ toaudio
+│❏ tomp3
+│❏ tovn
+│❏ togif
+│❏ tourl
+│❏ toqr
+│❏ toviewonce
+│❏ fliptext
+│❏ emojimix
+╰─┬────❍
+╭─┴❍「 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 𝙼𝙴𝙽𝚄 」❍
+│❏ addvideo
+│❏ addimage
+│❏ addsticker
+│❏ addvn
+│❏ addzip
+│❏ addapk
+│❏ addpdf
+│❏ delvideo
+│❏ delimage
+│❏ delsticker
+│❏ delvn
+│❏ delzip
+│❏ delapk
+│❏ delpdf
+│❏ listvideo
+│❏ listimage
+│❏ liststicker
+│❏ listvn
+│❏ listzip
+│❏ listapk
+│❏ listpdf
+╰─┬────❍
+╭─┴❍「 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙴𝙽𝚄 」❍
+│❏ play
+│❏ ytmp3
+│❏ ytmp4
+╰──────❍`
 if (typemenu === 'v1') {
                     XeonBotInc.sendMessage(m.chat, {
                         text: xeonmenuoh,
@@ -2387,7 +2407,7 @@ if (typemenu === 'v1') {
                             externalAdReply: {
                                 title: botname,
                                 body: ownername,
-                                thumbnailUrl: 'https://telegra.ph/file/97c008170fe8e6e714a32.jpg',
+                                thumbnailUrl: 'https://telegra.ph/file/da0ca9afe07d00af53811.jpg',
                                 sourceUrl: link,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
@@ -2398,14 +2418,14 @@ if (typemenu === 'v1') {
                     })
                     } else if (typemenu === 'v2') {
                     XeonBotInc.sendMessage(m.chat, {
-      video: fs.readFileSync('./TOGEMedia/thumb2.mp4'),
+      video: fs.readFileSync('./lib/Media/bug.mp4'),
       gifPlayback: true,
       caption: xeonmenuoh,
       contextInfo: {
       externalAdReply: {
       title: botname,
       body: ownername,
-      thumbnailUrl: 'https://telegra.ph/file/97c008170fe8e6e714a32.jpg',
+      thumbnailUrl: 'https://telegra.ph/file/da0ca9afe07d00af53811.jpg',
       sourceUrl: ``,
       mediaType: 1,
       renderLargerThumbnail: true
@@ -2416,7 +2436,7 @@ if (typemenu === 'v1') {
                     })
                 } else if (typemenu === 'v3') {
                     XeonBotInc.sendMessage(m.chat, {
-                        video: fs.readFileSync('./TOGEMedia/thumb2.mp4'),
+                        video: fs.readFileSync('./lib/Media/bug.mp4'),
                         caption: xeonmenuoh,
                         gifPlayback: true
                     }, {
