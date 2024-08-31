@@ -1,6 +1,4 @@
- 
-
-<h1 align="center">𝐓𝐎𝐆𝐄-𝐁𝐔𝐆-𝐀𝐈<br></h1>
+<h1 align="center">👾 𝚃𝙾𝙶𝙴-𝙱𝚄𝙶-𝙰𝙸 𝚆𝙷𝙰𝚃𝚂𝙰𝙿𝙿 𝙱𝙾𝚃 👾<br></h1>
 <p align="center">
 <img src="https://telegra.ph/file/313db89477904f64887b0.jpg" />
 </p>
@@ -39,9 +37,9 @@ TOGE-BUG-AI Multi Device is a whatsapp bot developed by <a href="https://github.
 </a>
 
 #### DEPLOY TO PANEL
- If You don't have a account in Heroku. Create a account.
+ If You don't have a account in Panel. Create a account.
     <br>
-<a href='https://solarhosting.cc/' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=heroku&logoColor=white'/></a>
+<a href='https://solarhosting.cc/' target="_blank"><img alt='Panel' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=visualstudiocode'/></a>
 #### DEPLOY TO HEROKU 
 ☉ If You don't have a account in Heroku. Create a account.
     <br>
