@@ -39,7 +39,10 @@ TOGE-BUG-AI Multi Device is a whatsapp bot developed by <a href="https://github.
 #### DEPLOY TO PANEL
  If You don't have a account in Panel. Create a account.
     <br>
-<a href='https://bot-hosting.net/' target="_blank"><img alt='Panel' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=visualstudiocode'/></a>
+<a href='https://bot-hosting.net/login' target="_blank"><img alt='Panel' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=visualstudiocode'/></a>
+Now Deploy
+    <br>
+    <a href='https://bot-hosting.net/' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=replit&logoColor=white'/></a>   
 #### DEPLOY TO HEROKU 
 ☉ If You don't have a account in Heroku. Create a account.
     <br>
@@ -48,6 +51,10 @@ TOGE-BUG-AI Multi Device is a whatsapp bot developed by <a href="https://github.
 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
 https://github.com/clhuang/heroku-buildpack-webp-binaries.git
 ```
+. Now Deploy
+    <br>
+<a href='https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Ftoge012345%2FTOGE-AI-BUG%3Ftab%3Dreadme-ov-file&template=https%3A%2F%2Fgithub.com%2Ftoge012345%2FTOGE-AI-BUG%3Ftab%3Dreadme-ov-file' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=heroku'/></a>
+
 #### DEPLOY TO REPLIT
  If You don't have an account in Replit. Create a account.
     <br>
