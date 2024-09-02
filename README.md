@@ -41,8 +41,7 @@ TOGE-BUG-AI Multi Device is a whatsapp bot developed by <a href="https://github.
     <br>
 <a href='https://bot-hosting.net/login' target="_blank"><img alt='Panel' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=visualstudiocode'/></a>
 Now Deploy
-    <br>
-    <a href='https://bot-hosting.net/' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=replit&logoColor=white'/></a>   
+<a href='https://bot-hosting.net/' target="_blank"><img alt='Codespaces' src='https://img.shields.io/badge/CREATE-h?color=black&style=for-the-badge&logo=visualstudiocode' width="96.35" height="28"/></a></p>  
 #### DEPLOY TO HEROKU 
 ☉ If You don't have a account in Heroku. Create a account.
     <br>
