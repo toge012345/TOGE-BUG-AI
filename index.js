@@ -1,1 +1,25 @@
-const _0x2898c0=_0x289a;(function(_0x3dda9f,_0x42ee4c){const _0x467918=_0x289a,_0xa428ef=_0x3dda9f();while(!![]){try{const _0x41df5d=parseInt(_0x467918(0x1c3))/0x1+parseInt(_0x467918(0x1c1))/0x2+parseInt(_0x467918(0x1b9))/0x3+-parseInt(_0x467918(0x1b8))/0x4+-parseInt(_0x467918(0x1bb))/0x5*(-parseInt(_0x467918(0x1bc))/0x6)+-parseInt(_0x467918(0x1b4))/0x7*(-parseInt(_0x467918(0x1be))/0x8)+-parseInt(_0x467918(0x1b7))/0x9;if(_0x41df5d===_0x42ee4c)break;else _0xa428ef['push'](_0xa428ef['shift']());}catch(_0x17ae83){_0xa428ef['push'](_0xa428ef['shift']());}}}(_0x1b92,0x35686));function _0x1b92(){const _0x2cf845=['7176IUYRvg','error','argv','516744vMxTJL','log','164685NGeAOi','exit','join','message','path','2933vsudem','inherit','ipc','7149195YXTPYF','51140iHpAUO','98040cbSacE','slice','5TofWlX','1165908RGwhOn','Exited\x20with\x20code:'];_0x1b92=function(){return _0x2cf845;};return _0x1b92();}const {spawn}=require('child_process'),path=require(_0x2898c0(0x1b3));function start(){const _0xa7abda=_0x2898c0;let _0x466ec4=[path[_0xa7abda(0x1c5)](__dirname,'main.js'),...process[_0xa7abda(0x1c0)][_0xa7abda(0x1ba)](0x2)];console[_0xa7abda(0x1c2)]([process[_0xa7abda(0x1c0)][0x0],..._0x466ec4][_0xa7abda(0x1c5)]('\x0a'));let _0x4e9694=spawn(process[_0xa7abda(0x1c0)][0x0],_0x466ec4,{'stdio':[_0xa7abda(0x1b5),_0xa7abda(0x1b5),_0xa7abda(0x1b5),_0xa7abda(0x1b6)]})['on'](_0xa7abda(0x1b2),_0x206490=>{const _0x2f01bf=_0xa7abda;_0x206490=='reset'&&(console[_0x2f01bf(0x1c2)]('Restarting\x20Bot...'),_0x4e9694['kill'](),start(),delete _0x4e9694);})['on'](_0xa7abda(0x1c4),_0xb43815=>{const _0x183b5c=_0xa7abda;console[_0x183b5c(0x1bf)](_0x183b5c(0x1bd),_0xb43815);if(_0xb43815=='.'||_0xb43815==0x1||_0xb43815==0x0)start();});}function _0x289a(_0x305e77,_0x207962){const _0x1b9204=_0x1b92();return _0x289a=function(_0x289a25,_0x52261c){_0x289a25=_0x289a25-0x1b2;let _0x10b289=_0x1b9204[_0x289a25];return _0x10b289;},_0x289a(_0x305e77,_0x207962);}start();
+const {
+   spawn
+} = require('child_process')
+const path = require('path')
+
+function start() {
+   let args = [path.join(__dirname, 'main.js'), ...process.argv.slice(2)]
+   console.log([process.argv[0], ...args].join('\n'))
+   let p = spawn(process.argv[0], args, {
+         stdio: ['inherit', 'inherit', 'inherit', 'ipc']
+      })
+      .on('message', data => {
+         if (data == 'reset') {
+            console.log('Restarting Bot...')
+            p.kill()
+            start()
+            delete p
+         }
+      })
+      .on('exit', code => {
+         console.error('Exited with code:', code)
+         if (code == '.' || code == 1 || code == 0) start()
+      })
+}
+start()
