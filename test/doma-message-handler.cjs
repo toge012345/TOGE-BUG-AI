@@ -1,6 +1,7 @@
 'use strict'
 
 const { menu, createMeme, MemeInputError } = require('../doma-commandes.cjs')
+const { createStaticSticker } = require('./doma-sticker.cjs')
 
 async function handleDomaMessage(message, { downloadImage, sendText, sendSticker, request }) {
   const match = /^\.(menu|smeme)(?:\s+([\s\S]*))?$/i.exec(message.body?.trim() ?? '')
@@ -22,7 +23,8 @@ async function handleDomaMessage(message, { downloadImage, sendText, sendSticker
   try {
     const image = await downloadImage(source)
     const mime = (source.msg ?? source).mimetype
-    stickerImage = await createMeme({ image, mime, caption, request })
+    const png = await createMeme({ image, mime, caption, request })
+    stickerImage = await createStaticSticker(png)
   } catch (error) {
     const reply = error instanceof MemeInputError ? error.message : 'La génération du sticker a échoué. Réessaie dans un instant.'
     await sendText(message.chat, reply)

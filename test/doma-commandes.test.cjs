@@ -1,11 +1,12 @@
 'use strict'
 
 const assert = require('node:assert/strict')
+const { execFileSync } = require('node:child_process')
 const { test } = require('node:test')
 const { handleDomaMessage } = require('./doma-message-handler.cjs')
 
 const chat = 'test-chat'
-const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScLbtAAAAABJRU5ErkJggg==', 'base64')
+const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAEklEQVR4nGP4Uqj2HxkzoAsAAFopFFFg4Q/DAAAAAElFTkSuQmCC', 'base64')
 const background = 'https://a.uguu.se/test.png'
 
 test('.menu envoie le nom, la signature et le lien de la chaîne', async () => {
@@ -50,7 +51,12 @@ for (const quoted of [false, true]) {
         calls.push('sticker')
         assert.equal(destination, chat)
         assert.equal(original, message)
-        assert.deepEqual(image, png)
+        assert.ok(image.length <= 100_000)
+        const metadata = execFileSync('ffprobe', [
+          '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=codec_name,width,height',
+          '-of', 'json', 'pipe:0',
+        ], { input: image, encoding: 'utf8', timeout: 10000 })
+        assert.deepEqual(JSON.parse(metadata).streams, [{ codec_name: 'webp', width: 512, height: 512 }])
       },
     })
     assert.equal(handled, true)
@@ -73,6 +79,20 @@ test('.smeme signale une panne du fournisseur dans le chat de test', async () =>
     request: async () => new Response(null, { status: 503 }),
     sendText: async (_destination, text) => replies.push(text),
   })
+  assert.match(replies.join(), /La génération du sticker a échoué/)
+})
+
+test('.smeme signale une image générée invalide avant de tenter un envoi', async () => {
+  const replies = []
+  const handled = await handleDomaMessage({ chat, body: '.smeme Haut', mtype: 'imageMessage', msg: { mimetype: 'image/png' } }, {
+    downloadImage: async () => png,
+    request: async url => new URL(url).hostname === 'uguu.se'
+      ? Response.json({ success: true, files: [{ url: background }] })
+      : new Response('PNG invalide', { headers: { 'content-type': 'image/png' } }),
+    sendText: async (_destination, text) => replies.push(text),
+    sendSticker: async () => assert.fail('Un sticker invalide ne doit pas être envoyé'),
+  })
+  assert.equal(handled, true)
   assert.match(replies.join(), /La génération du sticker a échoué/)
 })
 
