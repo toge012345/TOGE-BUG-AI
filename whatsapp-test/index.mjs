@@ -1,11 +1,12 @@
 import { mkdir, mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { createInterface } from 'node:readline/promises'
 import { fileURLToPath } from 'node:url'
 import * as baileys from 'baileys'
 import pino from 'pino'
-import qrcode from 'qrcode-terminal'
 import { bindCommands } from './messages.mjs'
+import { createPairingHandler, normalizePairingNumber } from './pairing.mjs'
 
 const { makeWASocket, useMultiFileAuthState, DisconnectReason } = baileys
 const logger = pino({ level: 'silent' })
@@ -34,7 +35,7 @@ async function probe() {
       }
       socket.ev.on('connection.update', onUpdate)
     })
-    console.log('WhatsApp a répondu avec un QR d’appairage. Aucun compte lié.')
+    console.log('WhatsApp a répondu au WebSocket. Aucun compte lié.')
   } finally {
     await rm(dir, { force: true, recursive: true })
   }
@@ -64,9 +65,36 @@ async function startSessions(names) {
       sessions.set(name, { dir, lock, delay: 1000, pendingSave: Promise.resolve() })
     }
 
-    async function connect(name, session) {
+    const newSessions = []
+    for (const [name, session] of sessions) {
       if (stop.signal.aborted) return
-      const { state, saveCreds } = await useMultiFileAuthState(session.dir)
+      session.auth = await useMultiFileAuthState(session.dir)
+      if (!session.auth.state.creds.registered) newSessions.push([name, session])
+    }
+
+    if (newSessions.length && !stop.signal.aborted) {
+      if (!process.stdin.isTTY) throw new Error('Ouvre un terminal interactif pour saisir les numéros des nouvelles sessions.')
+      const input = createInterface({ input: process.stdin, output: process.stdout })
+      input.once('SIGINT', requestStop)
+      const numbers = new Set()
+      try {
+        for (const [name, session] of newSessions) {
+          const answer = await input.question(`[${name}] Numéro WhatsApp avec indicatif : `, { signal: stop.signal })
+          session.phone = normalizePairingNumber(answer)
+          if (numbers.has(session.phone)) throw new Error('Utilise un numéro différent pour chaque nouvelle session.')
+          numbers.add(session.phone)
+        }
+      } catch (error) {
+        if (stop.signal.aborted) return
+        throw error
+      } finally {
+        input.close()
+      }
+    }
+
+    async function connect(name, session, initialAuth) {
+      if (stop.signal.aborted) return
+      const { state, saveCreds } = initialAuth ?? await useMultiFileAuthState(session.dir)
       if (stop.signal.aborted) return
       const socket = makeWASocket({
         auth: state,
@@ -86,12 +114,16 @@ async function startSessions(names) {
       socket.ev.on('messages.upsert', update => {
         onMessages(update).catch(() => console.error(`[${name}] Échec du traitement du message.`))
       })
-      socket.ev.on('connection.update', ({ qr, connection, lastDisconnect }) => {
-        if (stop.signal.aborted || session.socket !== socket) return
-        if (qr) {
-          console.log(`[${name}] Scanne ce QR depuis Appareils connectés dans WhatsApp.`)
-          qrcode.generate(qr, { small: true })
-        }
+      const isCurrent = () => !stop.signal.aborted && session.socket === socket
+      const onPairingUpdate = createPairingHandler(socket, session.phone, {
+        isCurrent,
+        onCode: code => console.log(`[${name}] Code d’appairage : ${code}`),
+        onError: () => console.error(`[${name}] Demande de code échouée. Nouvelle tentative lorsque WhatsApp est prêt.`),
+      })
+      socket.ev.on('connection.update', update => {
+        if (!isCurrent()) return
+        const { connection, lastDisconnect } = update
+        void onPairingUpdate(update)
         if (connection === 'open') {
           session.delay = 1000
           console.log(`[${name}] Connecté à WhatsApp.`)
@@ -117,7 +149,10 @@ async function startSessions(names) {
       })
     }
 
-    for (const [name, session] of sessions) await connect(name, session)
+    for (const [name, session] of sessions) {
+      await connect(name, session, session.auth)
+      delete session.auth
+    }
     if (!stop.signal.aborted) {
       // Keep the CLI available for an explicit shutdown if all sessions close.
       const keepAlive = setInterval(() => {}, 60_000)

@@ -5,6 +5,63 @@ import { join } from 'node:path'
 import { test } from 'node:test'
 import { jidNormalizedUser, useMultiFileAuthState } from 'baileys'
 import { bindCommands } from './messages.mjs'
+import { createPairingHandler, normalizePairingNumber } from './pairing.mjs'
+
+test('le numéro est normalisé et doit inclure un indicatif international', () => {
+  assert.equal(normalizePairingNumber('+243 800 000 001'), '243800000001')
+  assert.throws(() => normalizePairingNumber('0800 000 001'), /indicatif/)
+  assert.throws(() => normalizePairingNumber('+243ABC'), /indicatif/)
+})
+
+test('le code est demandé une fois quand le socket est prêt, avec un numéro par compte', async () => {
+  const requested = []
+  const codes = []
+  const handlers = ['243800000001', '243800000002'].map((phone, index) => {
+    const socket = {
+      authState: { creds: { registered: false } },
+      async requestPairingCode(number) {
+        requested.push(number)
+        return `ABCD000${index}`
+      },
+    }
+    return createPairingHandler(socket, phone, {
+      isCurrent: () => true,
+      onCode: code => codes.push(code),
+      onError: () => assert.fail('La demande de code doit réussir'),
+    })
+  })
+  await Promise.all(handlers.map(handler => handler({ connection: 'connecting' })))
+  assert.deepEqual(requested, [])
+  await Promise.all(handlers.flatMap(handler => [handler({ qr: 'ready' }), handler({ qr: 'refreshed' })]))
+  assert.deepEqual(requested, ['243800000001', '243800000002'])
+  assert.deepEqual(codes, ['ABCD0000', 'ABCD0001'])
+})
+
+test('une session déjà liée ne demande pas de code et une demande échouée peut être retentée', async () => {
+  const creds = { registered: true }
+  let requests = 0
+  let errors = 0
+  const codes = []
+  const handler = createPairingHandler({
+    authState: { creds },
+    async requestPairingCode() {
+      if (++requests === 1) throw new Error('Session temporairement indisponible')
+      return 'ABCD0001'
+    },
+  }, '243800000001', {
+    isCurrent: () => true,
+    onCode: code => codes.push(code),
+    onError: () => { errors++ },
+  })
+  await handler({ qr: 'ready' })
+  assert.equal(requests, 0)
+  creds.registered = false
+  await handler({ qr: 'ready' })
+  await handler({ qr: 'refreshed' })
+  assert.equal(requests, 2)
+  assert.equal(errors, 1)
+  assert.deepEqual(codes, ['ABCD0001'])
+})
 
 test('Baileys enregistre et recharge les identifiants de deux comptes séparément', async t => {
   const root = await mkdtemp(join(tmpdir(), 'doma-auth-test-'))
