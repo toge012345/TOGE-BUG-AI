@@ -1,5 +1,6 @@
 import { mkdir, mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
+import { loadEnvFile } from 'node:process'
 import { join } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 import { fileURLToPath } from 'node:url'
@@ -41,7 +42,7 @@ async function probe() {
   }
 }
 
-async function startSessions(names) {
+async function startSessions(names, hostedPhone) {
   const root = fileURLToPath(new URL('./sessions/', import.meta.url))
   await mkdir(root, { recursive: true, mode: 0o700 })
   const sessions = new Map()
@@ -72,7 +73,9 @@ async function startSessions(names) {
       if (!session.auth.state.creds.registered) newSessions.push([name, session])
     }
 
-    if (newSessions.length && !stop.signal.aborted) {
+    if (hostedPhone && newSessions.length) {
+      newSessions[0][1].phone = hostedPhone
+    } else if (newSessions.length && !stop.signal.aborted) {
       if (!process.stdin.isTTY) throw new Error('Ouvre un terminal interactif pour saisir les numéros des nouvelles sessions.')
       const input = createInterface({ input: process.stdin, output: process.stdout })
       input.once('SIGINT', requestStop)
@@ -176,7 +179,17 @@ async function startSessions(names) {
 
 try {
   const names = process.argv.slice(2)
-  if (names.length === 1 && names[0] === '--probe') await probe()
+  if (names.length === 1 && names[0] === '--hosted') {
+    try {
+      loadEnvFile(new URL('../.env', import.meta.url))
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error
+    }
+    if (!process.env.DOMA_WHATSAPP_NUMBER?.trim()) {
+      throw new Error('Renseigne DOMA_WHATSAPP_NUMBER dans le fichier .env avant de démarrer.')
+    }
+    await startSessions(['compte1'], normalizePairingNumber(process.env.DOMA_WHATSAPP_NUMBER))
+  } else if (names.length === 1 && names[0] === '--probe') await probe()
   else {
     if (!names.length || new Set(names).size !== names.length || names.some(name => !/^[a-z0-9][a-z0-9_-]{0,31}$/.test(name))) {
       throw new Error('Usage : npm start -- compte1 compte2 (noms uniques en minuscules)')
