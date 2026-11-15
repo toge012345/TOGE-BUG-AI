@@ -15,6 +15,6 @@
   },
   "main": "index.js",
   "overrides": {
-    "libsignal": "https://codeload.github.com/whiskeysockets/libsignal-node/tar.gz/bcea72df9ec34d9d9140ab30619cf479c7c144c7"
+    "libsignal": "6.0.0"
   }
 }
