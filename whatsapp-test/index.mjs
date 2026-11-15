@@ -1,0 +1,202 @@
+import { mkdir, mkdtemp, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { loadEnvFile } from 'node:process'
+import { join } from 'node:path'
+import { createInterface } from 'node:readline/promises'
+import { fileURLToPath } from 'node:url'
+import * as baileys from 'baileys'
+import pino from 'pino'
+import { bindCommands } from './messages.mjs'
+import { createPairingHandler, normalizePairingNumber } from './pairing.mjs'
+
+const { makeWASocket, useMultiFileAuthState, DisconnectReason } = baileys
+const logger = pino({ level: 'silent' })
+const terminalFailures = new Set([
+  DisconnectReason.loggedOut, DisconnectReason.badSession, DisconnectReason.connectionReplaced,
+  DisconnectReason.multideviceMismatch, DisconnectReason.forbidden,
+])
+
+async function probe() {
+  const dir = await mkdtemp(join(tmpdir(), 'doma-wa-probe-'))
+  try {
+    const { state } = await useMultiFileAuthState(dir)
+    const socket = makeWASocket({ auth: state, logger, connectTimeoutMs: 15000 })
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => finish(new Error('Délai dépassé avant réception du QR.')), 20000)
+      function finish(error) {
+        clearTimeout(timer)
+        socket.ev.off('connection.update', onUpdate)
+        socket.end(undefined)
+        if (error) reject(error)
+        else resolve()
+      }
+      function onUpdate({ qr, connection, lastDisconnect }) {
+        if (qr) finish()
+        else if (connection === 'close') finish(lastDisconnect?.error ?? new Error('Connexion fermée.'))
+      }
+      socket.ev.on('connection.update', onUpdate)
+    })
+    console.log('WhatsApp a répondu au WebSocket. Aucun compte lié.')
+  } finally {
+    await rm(dir, { force: true, recursive: true })
+  }
+}
+
+async function startSessions(names, hostedPhone) {
+  const root = fileURLToPath(new URL('./sessions/', import.meta.url))
+  await mkdir(root, { recursive: true, mode: 0o700 })
+  const sessions = new Map()
+  const stop = new AbortController()
+  const requestStop = () => stop.abort()
+  process.once('SIGINT', requestStop)
+  process.once('SIGTERM', requestStop)
+
+  try {
+    for (const name of names) {
+      if (stop.signal.aborted) return
+      const dir = join(root, name)
+      await mkdir(dir, { recursive: true, mode: 0o700 })
+      const lock = join(dir, '.running')
+      try {
+        await mkdir(lock, { mode: 0o700 })
+      } catch (error) {
+        if (error.code !== 'EEXIST') throw error
+        throw new Error(`[${name}] Session déjà verrouillée. Arrête l’autre instance avant de réessayer.`)
+      }
+      sessions.set(name, { dir, lock, delay: 1000, pendingSave: Promise.resolve() })
+    }
+
+    const newSessions = []
+    for (const [name, session] of sessions) {
+      if (stop.signal.aborted) return
+      session.auth = await useMultiFileAuthState(session.dir)
+      if (!session.auth.state.creds.registered) newSessions.push([name, session])
+    }
+
+    if (hostedPhone && newSessions.length) {
+      newSessions[0][1].phone = hostedPhone
+    } else if (newSessions.length && !stop.signal.aborted) {
+      if (!process.stdin.isTTY) throw new Error('Ouvre un terminal interactif pour saisir les numéros des nouvelles sessions.')
+      const input = createInterface({ input: process.stdin, output: process.stdout })
+      input.once('SIGINT', requestStop)
+      const numbers = new Set()
+      try {
+        for (const [name, session] of newSessions) {
+          const answer = await input.question(`[${name}] Numéro WhatsApp avec indicatif : `, { signal: stop.signal })
+          session.phone = normalizePairingNumber(answer)
+          if (numbers.has(session.phone)) throw new Error('Utilise un numéro différent pour chaque nouvelle session.')
+          numbers.add(session.phone)
+        }
+      } catch (error) {
+        if (stop.signal.aborted) return
+        throw error
+      } finally {
+        input.close()
+      }
+    }
+
+    async function connect(name, session, initialAuth) {
+      if (stop.signal.aborted) return
+      const { state, saveCreds } = initialAuth ?? await useMultiFileAuthState(session.dir)
+      if (stop.signal.aborted) return
+      const socket = makeWASocket({
+        auth: state,
+        logger,
+        connectTimeoutMs: 15000,
+        markOnlineOnConnect: false,
+        shouldSyncHistoryMessage: () => false,
+      })
+      session.socket = socket
+
+      socket.ev.on('creds.update', () => {
+        session.pendingSave = session.pendingSave.then(saveCreds).catch(() => {
+          console.error(`[${name}] Impossible d’enregistrer les identifiants de session.`)
+        })
+      })
+      const onMessages = bindCommands(socket, baileys, (message) => console.log(`[${name}] ${message}`))
+      socket.ev.on('messages.upsert', update => {
+        onMessages(update).catch(() => console.error(`[${name}] Échec du traitement du message.`))
+      })
+      const isCurrent = () => !stop.signal.aborted && session.socket === socket
+      const onPairingUpdate = createPairingHandler(socket, session.phone, {
+        isCurrent,
+        onCode: code => console.log(`[${name}] Code d’appairage : ${code}`),
+        onError: () => console.error(`[${name}] Demande de code échouée. Nouvelle tentative lorsque WhatsApp est prêt.`),
+      })
+      socket.ev.on('connection.update', update => {
+        if (!isCurrent()) return
+        const { connection, lastDisconnect } = update
+        void onPairingUpdate(update)
+        if (connection === 'open') {
+          session.delay = 1000
+          console.log(`[${name}] Connecté à WhatsApp.`)
+        }
+        if (connection !== 'close') return
+        session.socket = undefined
+        const code = lastDisconnect?.error?.output?.statusCode
+        if (terminalFailures.has(code)) {
+          console.error(`[${name}] Session arrêtée par WhatsApp (${code}).`)
+          return
+        }
+        const delay = code === DisconnectReason.restartRequired ? 0 : session.delay
+        session.delay = Math.min(session.delay * 2, 30000)
+        console.log(`[${name}] Reconnexion dans ${delay / 1000} s (${code ?? 'connexion interrompue'}).`)
+        session.retry = setTimeout(async () => {
+          try {
+            await session.pendingSave
+            await connect(name, session)
+          } catch {
+            console.error(`[${name}] Impossible de rouvrir la session.`)
+          }
+        }, delay)
+      })
+    }
+
+    for (const [name, session] of sessions) {
+      await connect(name, session, session.auth)
+      delete session.auth
+    }
+    if (!stop.signal.aborted) {
+      // Keep the CLI available for an explicit shutdown if all sessions close.
+      const keepAlive = setInterval(() => {}, 60_000)
+      await new Promise(resolve => stop.signal.addEventListener('abort', resolve, { once: true }))
+      clearInterval(keepAlive)
+    }
+  } finally {
+    stop.abort()
+    for (const session of sessions.values()) {
+      clearTimeout(session.retry)
+      session.socket?.end(undefined)
+    }
+    await Promise.all([...sessions.values()].map(async session => {
+      await session.pendingSave
+      await rm(session.lock, { recursive: true, force: true })
+    }))
+    process.removeListener('SIGINT', requestStop)
+    process.removeListener('SIGTERM', requestStop)
+  }
+}
+
+try {
+  const names = process.argv.slice(2)
+  if (names.length === 1 && names[0] === '--hosted') {
+    try {
+      loadEnvFile(new URL('../.env', import.meta.url))
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error
+    }
+    if (!process.env.DOMA_WHATSAPP_NUMBER?.trim()) {
+      throw new Error('Renseigne DOMA_WHATSAPP_NUMBER dans le fichier .env avant de démarrer.')
+    }
+    await startSessions(['compte1'], normalizePairingNumber(process.env.DOMA_WHATSAPP_NUMBER))
+  } else if (names.length === 1 && names[0] === '--probe') await probe()
+  else {
+    if (!names.length || new Set(names).size !== names.length || names.some(name => !/^[a-z0-9][a-z0-9_-]{0,31}$/.test(name))) {
+      throw new Error('Usage : npm start -- compte1 compte2 (noms uniques en minuscules)')
+    }
+    await startSessions(names)
+  }
+} catch (error) {
+  console.error(`DOMA : ${error.message}`)
+  process.exitCode = 1
+}
