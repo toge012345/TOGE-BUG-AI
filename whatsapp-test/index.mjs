@@ -113,7 +113,7 @@ async function startSessions(names, hostedPhone) {
           console.error(`[${name}] Impossible d’enregistrer les identifiants de session.`)
         })
       })
-      const onMessages = bindCommands(socket, baileys)
+      const onMessages = bindCommands(socket, baileys, (message) => console.log(`[${name}] ${message}`))
       socket.ev.on('messages.upsert', update => {
         onMessages(update).catch(() => console.error(`[${name}] Échec du traitement du message.`))
       })
